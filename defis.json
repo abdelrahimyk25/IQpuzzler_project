@@ -1,0 +1,1225 @@
+{
+  "1": {
+    "mode": "rectangle",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "S T A R T E R\n1\n3\n2\n4"
+  },
+  "2": {
+    "mode": "rectangle",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "S T A R T E R\n5\n7\n6\n8"
+  },
+  "3": {
+    "mode": "rectangle",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "S T A R T E R\n9\nE X T R A\n1 1\nE X T R A\n1 0\nE X T R A\n1 2\nE X T R A"
+  },
+  "4": {
+    "mode": "rectangle",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "J U NI O R\n1 3\n1 5\n1 4\n1 6"
+  },
+  "5": {
+    "mode": "rectangle",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "J U NI O R\n1 7\n1 9\n1 8\n2 0"
+  },
+  "6": {
+    "mode": "rectangle",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "J U NI O R\n2 1\nE X T R A\n2 3\nE X T R A\n2 2\nE X T R A\n2 4\nE X T R A"
+  },
+  "7": {
+    "mode": "rectangle",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "E X P E R T\n2 5\n2 7\n2 6\n2 8"
+  },
+  "8": {
+    "mode": "rectangle",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "E X P E R T\n2 9\n3 1\n3 0\n3 2"
+  },
+  "9": {
+    "mode": "rectangle",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "E X P E R T\n3 3\nE X T R A\n3 5\nE X T R A\n3 4\nE X T R A\n3 6\nE X T R A"
+  },
+  "10": {
+    "mode": "rectangle",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "E X P E R T\n3 7\nE X T R A\n3 9\nE X T R A\n3 8\nE X T R A\n4 0\nE X T R A"
+  },
+  "11": {
+    "mode": "rectangle",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "M A S T E R\n4 1\n4 3\n4 2\n4 4"
+  },
+  "12": {
+    "mode": "rectangle",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "M A S T E R\n4 5\n4 7\n4 6\n4 8"
+  },
+  "13": {
+    "mode": "rectangle",
+    "difficulte": "Junior",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "M A S T E R\n4 9\nE X T R A\n5 1\nE X T R A\n5 0\nE X T R A\n5 2\nE X T R A"
+  },
+  "14": {
+    "mode": "rectangle",
+    "difficulte": "Junior",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "M A S T E R\n5 3\nE X T R A\n5 5\nE X T R A\n5 4\nE X T R A\n5 6\nE X T R A"
+  },
+  "15": {
+    "mode": "rectangle",
+    "difficulte": "Junior",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "WI Z A R D\n5 7\n5 9\n5 8\n6 0"
+  },
+  "16": {
+    "mode": "rectangle",
+    "difficulte": "Junior",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "WI Z A R D\n6 1\n6 3\n6 2\n6 4"
+  },
+  "17": {
+    "mode": "rectangle",
+    "difficulte": "Junior",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "S T A R T E R\n6 5\n6 7\n6 6\n6 8"
+  },
+  "18": {
+    "mode": "rectangle",
+    "difficulte": "Junior",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "S T A R T E R\n7 1\nE X T R A\n7 2\nE X T R A\n6 9\n7 0"
+  },
+  "19": {
+    "mode": "rectangle",
+    "difficulte": "Junior",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "J U NI O R\n7 3\n7 5\n7 4\n7 6"
+  },
+  "20": {
+    "mode": "rectangle",
+    "difficulte": "Junior",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "J U NI O R\n7 9\nE X T R A\n8 0\nE X T R A\n7 7\n7 8"
+  },
+  "21": {
+    "mode": "rectangle",
+    "difficulte": "Junior",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "J U NI O R\n8 1\nE X T R A\n8 3\nE X T R A\n8 2\nE X T R A\n8 4\nE X T R A"
+  },
+  "22": {
+    "mode": "rectangle",
+    "difficulte": "Junior",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "E X P E R T\n8 5\n8 7\n8 6\n8 8"
+  },
+  "23": {
+    "mode": "rectangle",
+    "difficulte": "Junior",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "E X P E R T\n9 1\nE X T R A\n9 2\nE X T R A\n8 9\n9 0"
+  },
+  "24": {
+    "mode": "rectangle",
+    "difficulte": "Junior",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "E X P E R T\n9 5\nE X T R A\n9 3\nE X T R A\n9 6\nE X T R A\n9 4\nE X T R A"
+  },
+  "25": {
+    "mode": "rectangle",
+    "difficulte": "Expert",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "M A S T E R\n9 7\n9 9\n9 8\n1 0 0"
+  },
+  "26": {
+    "mode": "rectangle",
+    "difficulte": "Expert",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "M A S T E R\n1 0 1\n1 0 3\n1 0 2\n1 0 4"
+  },
+  "27": {
+    "mode": "rectangle",
+    "difficulte": "Expert",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "M A S T E R\n1 0 5\n1 0 7\n1 0 6\n1 0 8"
+  },
+  "28": {
+    "mode": "rectangle",
+    "difficulte": "Expert",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "M A S T E R\n1 0 9\nE X T R A\n1 1 1\nE X T R A\n1 1 0\nE X T R A\n1 1 2\nE X T R A"
+  },
+  "29": {
+    "mode": "rectangle",
+    "difficulte": "Expert",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "WI Z A R D\n1 1 3\n1 1 5\n1 1 4\n1 1 6"
+  },
+  "30": {
+    "mode": "rectangle",
+    "difficulte": "Expert",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "WI Z A R D\n1 1 7\n1 1 9\n1 1 8\n1 2 0"
+  },
+  "31": {
+    "mode": "rectangle",
+    "difficulte": "Expert",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "WI Z A R D\n1 2 3\nE X T R A\n1 2 4\nE X T R A\n1 2 1\n1 2 2"
+  },
+  "32": {
+    "mode": "rectangle",
+    "difficulte": "Expert",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "WI Z A R D\n1 2 7\nE X T R A\n1 2 5\nE X T R A\n1 2 8\nE X T R A\n1 2 6\nE X T R A"
+  },
+  "33": {
+    "mode": "rectangle",
+    "difficulte": "Expert",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "S T A R T E R\n1 2 9\n1 3 1\n1 3 0\n1 3 2"
+  },
+  "34": {
+    "mode": "rectangle",
+    "difficulte": "Expert",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "S T A R T E R\n1 3 3\n1 3 5\n1 3 4\n1 3 6"
+  },
+  "35": {
+    "mode": "rectangle",
+    "difficulte": "Expert",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "S T A R T E R\n1 3 7\nE X T R A\n1 3 9\nE X T R A\n1 3 8\nE X T R A\n1 4 0\nE X T R A\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP"
+  },
+  "36": {
+    "mode": "rectangle",
+    "difficulte": "Expert",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "J U NI O R\n1 4 1\n1 4 3\n1 4 2\n1 4 4"
+  },
+  "37": {
+    "mode": "rectangle",
+    "difficulte": "Master",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "J U NI O R\n1 4 5\n1 4 7\n1 4 6\n1 4 8"
+  },
+  "38": {
+    "mode": "rectangle",
+    "difficulte": "Master",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "J U NI O R\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\n1 4 9\nE X T R A\n1 5 1\nE X T R A\n1 5 0\nE X T R A\n1 5 2\nE X T R A"
+  },
+  "39": {
+    "mode": "rectangle",
+    "difficulte": "Master",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "E X P E R T\n1 5 3\n1 5 5\n1 5 4\n1 5 6"
+  },
+  "40": {
+    "mode": "rectangle",
+    "difficulte": "Master",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "E X P E R T\n1 5 7\n1 5 9\n1 5 8\n1 6 0"
+  },
+  "41": {
+    "mode": "rectangle",
+    "difficulte": "Master",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "E X P E R T\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\n1 6 1\nE X T R A\n1 6 3\nE X T R A\n1 6 2\nE X T R A\n1 6 4\nE X T R A"
+  },
+  "42": {
+    "mode": "rectangle",
+    "difficulte": "Master",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "M A S T E R\n1 6 5\n1 6 7\n1 6 6\n1 6 8"
+  },
+  "43": {
+    "mode": "rectangle",
+    "difficulte": "Master",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "M A S T E R\n1 6 9\n1 7 1\n1 7 0\n1 7 2"
+  },
+  "44": {
+    "mode": "rectangle",
+    "difficulte": "Master",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "M A S T E R\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\n1 7 3\nE X T R A\n1 7 5\nE X T R A\n1 7 4\nE X T R A\n1 7 6\nE X T R A"
+  },
+  "45": {
+    "mode": "rectangle",
+    "difficulte": "Master",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "WI Z A R D\n1 7 7\n1 7 9\n1 7 8\n1 8 0"
+  },
+  "46": {
+    "mode": "rectangle",
+    "difficulte": "Master",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "WI Z A R D\n1 8 1\n1 8 3\n1 8 2\n1 8 4"
+  },
+  "47": {
+    "mode": "rectangle",
+    "difficulte": "Wizard",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "WI Z A R D\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\n1 8 5\nE X T R A\n1 8 7\nE X T R A\n1 8 6\nE X T R A\n1 8 8\nE X T R A"
+  },
+  "48": {
+    "mode": "rectangle",
+    "difficulte": "Wizard",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": ""
+  },
+  "49": {
+    "mode": "rectangle",
+    "difficulte": "Wizard",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "1\n3\n2\n4\nS O L U TI O N S\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "50": {
+    "mode": "rectangle",
+    "difficulte": "Wizard",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "5\n7\n6\n8\nS O L U TI O N S\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "51": {
+    "mode": "rectangle",
+    "difficulte": "Wizard",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "9\nE X T R A\n1 1\nE X T R A\n1 0\nE X T R A\n1 2\nE X T R A\nS O L U TI O N S\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "52": {
+    "mode": "rectangle",
+    "difficulte": "Wizard",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "1 3\n1 5\n1 4\n1 6\nS O L U TI O N S\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "53": {
+    "mode": "rectangle",
+    "difficulte": "Wizard",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "1 7\n1 9\n1 8\n2 0\nS O L U TI O N S\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "54": {
+    "mode": "rectangle",
+    "difficulte": "Wizard",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "2 1\nE X T R A\n2 3\nE X T R A\n2 2\nE X T R A\n2 4\nE X T R A\nS O L U TI O N S\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "55": {
+    "mode": "rectangle",
+    "difficulte": "Wizard",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "2 5\n2 7\n2 6\n2 8\nS O L U TI O N S\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "56": {
+    "mode": "rectangle",
+    "difficulte": "Wizard",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "2 9\n3 1\n3 0\n3 2\nS O L U TI O N S\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "57": {
+    "mode": "rectangle",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "3 3\nE X T R A\n3 5\nE X T R A\n3 4\nE X T R A\n3 6\nE X T R A\nS O L U TI O N S\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "58": {
+    "mode": "rectangle",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "S O L U TI O N S\n3 7\nE X T R A\n3 9\nE X T R A\n3 8\nE X T R A\n4 0\nE X T R A\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "59": {
+    "mode": "rectangle",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "S O L U TI O N S\n4 1\n4 3\n4 2\n4 4\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "60": {
+    "mode": "rectangle",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "S O L U TI O N S\n4 5\n4 7\n4 6\n4 8\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "61": {
+    "mode": "rectangle",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "S O L U TI O N S\n4 9\nE X T R A\n5 1\nE X T R A\n5 0\nE X T R A\n5 2\nE X T R A\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "62": {
+    "mode": "rectangle",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "S O L U TI O N S\n5 3\nE X T R A\n5 5\nE X T R A\n5 4\nE X T R A\n5 6\nE X T R A\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "63": {
+    "mode": "rectangle",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "S O L U TI O N S\n5 7\n5 9\n5 8\n6 0\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "64": {
+    "mode": "rectangle",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "S O L U TI O N S\n6 1\n6 3\n6 2\n6 4\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "65": {
+    "mode": "losange",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "S O L U TI O N S\n6 5\n6 7\n6 6\n6 8\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "66": {
+    "mode": "losange",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "S O L U TI O N S\n7 1\nE X T R A\n7 2\nE X T R A\n6 9\n7 0\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "67": {
+    "mode": "losange",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "J U NI O R\n7 3\n7 5\n7 4\n7 6\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "68": {
+    "mode": "losange",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "J U NI O R\n7 9\nE X T R A\n8 0\nE X T R A\n7 7\n7 8\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "69": {
+    "mode": "losange",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "J U NI O R\n8 1\nE X T R A\n8 3\nE X T R A\n8 2\nE X T R A\n8 4\nE X T R A\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "70": {
+    "mode": "losange",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "E X P E R T\n8 5\n8 7\n8 6\n8 8\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "71": {
+    "mode": "losange",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "E X P E R T\n9 1\nE X T R A\n9 2\nE X T R A\n8 9\n9 0\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "72": {
+    "mode": "losange",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "E X P E R T\n9 5\nE X T R A\n9 3\nE X T R A\n9 6\nE X T R A\n9 4\nE X T R A\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "73": {
+    "mode": "losange",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "M A S T E R\n9 7\n9 9\n9 8\n1 0 0\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "74": {
+    "mode": "losange",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "M A S T E R\n1 0 1\n1 0 3\n1 0 2\n1 0 4\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "75": {
+    "mode": "losange",
+    "difficulte": "Junior",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "M A S T E R\n1 0 5\n1 0 7\n1 0 6\n1 0 8\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "76": {
+    "mode": "losange",
+    "difficulte": "Junior",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "M A S T E R\n1 0 9\nE X T R A\n1 1 1\nE X T R A\n1 1 0\nE X T R A\n1 1 2\nE X T R A\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "77": {
+    "mode": "losange",
+    "difficulte": "Junior",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "WI Z A R D\n1 1 3\n1 1 5\n1 1 4\n1 1 6\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "78": {
+    "mode": "losange",
+    "difficulte": "Junior",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "WI Z A R D\n1 1 7\n1 1 9\n1 1 8\n1 2 0\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "79": {
+    "mode": "losange",
+    "difficulte": "Junior",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "WI Z A R D\n1 2 3\nE X T R A\n1 2 4\nE X T R A\n1 2 1\n1 2 2\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "80": {
+    "mode": "losange",
+    "difficulte": "Junior",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "WI Z A R D\n1 2 7\nE X T R A\n1 2 5\nE X T R A\n1 2 8\nE X T R A\n1 2 6\nE X T R A\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "81": {
+    "mode": "losange",
+    "difficulte": "Junior",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "1 2 9\n1 3 1\n1 3 0\n1 3 2\nS O L U TI O N S\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "82": {
+    "mode": "losange",
+    "difficulte": "Junior",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "1 3 3\n1 3 5\n1 3 4\n1 3 6\nS O L U TI O N S\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "83": {
+    "mode": "losange",
+    "difficulte": "Junior",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "A\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\nS O L U TI O N S\n1 3 7\nE X T R A\n1 3 9\nE X T R A\n1 3 8\nE X T R A\n1 4 0\nE X T R A\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "84": {
+    "mode": "losange",
+    "difficulte": "Junior",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "1 4 1\n1 4 3\n1 4 2\n1 4 4\nS O L U TI O N S\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "85": {
+    "mode": "losange",
+    "difficulte": "Expert",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "1 4 5\n1 4 7\n1 4 6\n1 4 8\nS O L U TI O N S\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "86": {
+    "mode": "losange",
+    "difficulte": "Expert",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "A\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\nS O L U TI O N S\n1 4 9\nE X T R A\n1 5 1\nE X T R A\n1 5 0\nE X T R A\n1 5 2\nE X T R A\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "87": {
+    "mode": "losange",
+    "difficulte": "Expert",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "1 5 3\n1 5 5\n1 5 4\n1 5 6\nS O L U TI O N S\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "88": {
+    "mode": "losange",
+    "difficulte": "Expert",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "1 5 7\n1 5 9\n1 5 8\n1 6 0\nS O L U TI O N S\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "89": {
+    "mode": "losange",
+    "difficulte": "Expert",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "A\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\nS O L U TI O N S\n1 6 1\nE X T R A\n1 6 3\nE X T R A\n1 6 2\nE X T R A\n1 6 4\nE X T R A\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "90": {
+    "mode": "losange",
+    "difficulte": "Expert",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "1 6 5\n1 6 7\n1 6 6\n1 6 8\nS O L U TI O N S\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "91": {
+    "mode": "losange",
+    "difficulte": "Expert",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "1 6 9\n1 7 1\n1 7 0\n1 7 2\nS O L U TI O N S\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "92": {
+    "mode": "losange",
+    "difficulte": "Expert",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "A\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\nS O L U TI O N S\n1 7 3\nE X T R A\n1 7 5\nE X T R A\n1 7 4\nE X T R A\n1 7 6\nE X T R A\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "93": {
+    "mode": "losange",
+    "difficulte": "Expert",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "1 7 7\n1 7 9\n1 7 8\n1 8 0\nS O L U TI O N S\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "94": {
+    "mode": "losange",
+    "difficulte": "Expert",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "S O L U TI O N S\n1 8 1\n1 8 3\n1 8 2\n1 8 4\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "95": {
+    "mode": "losange",
+    "difficulte": "Master",
+    "pieces_initiales": [],
+    "solution_grille": [],
+    "raw_text": "S O L U TI O N S\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\nA\nB\nC\nD\nE\nF\nG\nH\nI\nM\nN\nP\n1 8 5\nE X T R A\n1 8 7\nE X T R A\n1 8 6\nE X T R A\n1 8 8\nE X T R A\n©  2 0 1 5 -  2 0 2 0 I Q  P u z zl er  Pr o  X X L:  S M A R T -  B el gi u m"
+  },
+  "96": {
+    "mode": "losange",
+    "difficulte": "Master",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "97": {
+    "mode": "losange",
+    "difficulte": "Master",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "98": {
+    "mode": "losange",
+    "difficulte": "Master",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "99": {
+    "mode": "losange",
+    "difficulte": "Master",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "100": {
+    "mode": "losange",
+    "difficulte": "Master",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "101": {
+    "mode": "losange",
+    "difficulte": "Master",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "102": {
+    "mode": "losange",
+    "difficulte": "Master",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "103": {
+    "mode": "losange",
+    "difficulte": "Master",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "104": {
+    "mode": "losange",
+    "difficulte": "Master",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "105": {
+    "mode": "losange",
+    "difficulte": "Wizard",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "106": {
+    "mode": "losange",
+    "difficulte": "Wizard",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "107": {
+    "mode": "losange",
+    "difficulte": "Wizard",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "108": {
+    "mode": "losange",
+    "difficulte": "Wizard",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "109": {
+    "mode": "losange",
+    "difficulte": "Wizard",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "110": {
+    "mode": "losange",
+    "difficulte": "Wizard",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "111": {
+    "mode": "losange",
+    "difficulte": "Wizard",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "112": {
+    "mode": "losange",
+    "difficulte": "Wizard",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "113": {
+    "mode": "losange",
+    "difficulte": "Wizard",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "114": {
+    "mode": "losange",
+    "difficulte": "Wizard",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "115": {
+    "mode": "losange",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "116": {
+    "mode": "losange",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "117": {
+    "mode": "losange",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "118": {
+    "mode": "losange",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "119": {
+    "mode": "losange",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "120": {
+    "mode": "losange",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "121": {
+    "mode": "losange",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "122": {
+    "mode": "losange",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "123": {
+    "mode": "losange",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "124": {
+    "mode": "losange",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "125": {
+    "mode": "losange",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "126": {
+    "mode": "losange",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "127": {
+    "mode": "losange",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "128": {
+    "mode": "losange",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "129": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "130": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "131": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "132": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "133": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "134": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "135": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "136": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "137": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "138": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "139": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "140": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "141": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "142": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "143": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "144": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "145": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "146": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "147": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "148": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "149": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "150": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "151": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "152": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "153": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "154": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "155": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "156": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "157": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "158": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "159": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "160": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "161": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "162": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "163": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "164": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "165": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "166": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "167": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "168": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "169": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "170": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "171": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "172": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "173": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "174": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "175": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "176": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "177": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "178": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "179": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "180": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "181": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "182": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "183": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "184": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "185": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "186": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "187": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  },
+  "188": {
+    "mode": "pyramide",
+    "difficulte": "Starter",
+    "pieces_initiales": [],
+    "solution_grille": []
+  }
+}
