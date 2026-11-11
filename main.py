@@ -3,6 +3,9 @@ pieces.py - Les 12 pièces officielles vérifiées de l'IQ Puzzler Pro XXL
 Total = 55 billes (verif que le main est bien lier au projet github)
 """
 
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
+
 PIECES = {
     # A - Jaune (5 billes)
     # . . ● .
