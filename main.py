@@ -1,6 +1,6 @@
 """
 pieces.py - Les 12 pièces officielles vérifiées de l'IQ Puzzler Pro XXL
-Total = 55 billes
+Total = 55 billes (verif que le main est bien lier au projet github)
 """
 
 PIECES = {
