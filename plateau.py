@@ -1,3 +1,5 @@
+from collections import deque
+
 from pieces import PIECES
 # definir les dims (5x11)
 HAUTEUR = 5 #0...4
@@ -66,6 +68,35 @@ class Plateau :
                 if self._est_vide(x,y):
                     return(x,y)
         return None
+
+    def get_ilots_vides(self) -> list[set[tuple[int, int]]]:
+        """Retourne une liste de sets représentant les îlots de cases vides (BFS)."""
+        ilots = []
+        visitees = set()
+
+        for y in range(HAUTEUR):
+            for x in range(LARGEUR):
+                if self._est_vide(x, y) and (x, y) not in visitees:
+                    # Exploration BFS de l'îlot vide
+                    ilot = set()
+                    file = deque([(x, y)])
+                    visitees.add((x, y))
+
+                    # On explore toutes les cases vides connectées à (x, y) et on les ajoute à l'îlot
+                    while file:
+                        cx, cy = file.popleft()
+                        ilot.add((cx, cy))
+                        
+                        # On explore les 4 voisins (haut, bas, gauche, droite)
+                        for nx, ny in ((cx + 1, cy), (cx - 1, cy), (cx, cy + 1), (cx, cy - 1)):
+                            # On vérifie que le voisin est dans le plateau, vide et non encore visité
+                            if self.dans_plateau(nx, ny) and self._est_vide(nx, ny) and (nx, ny) not in visitees:
+                                visitees.add((nx, ny))
+                                file.append((nx, ny))
+
+                    ilots.append(ilot)
+
+        return ilots
 
     # fonction pour la fin de jeu quand le plateau est complet
     def est_complet(self) -> bool: 

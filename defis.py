@@ -55,14 +55,14 @@ class Defi:
             pid = p["id"]
             x0, y0 = p["x"], p["y"]
             forme = [tuple(coord) for coord in p["forme"]]
-            self.plateau.poser_piece(forme, x0, y0, pid)
+            self.plateau.poser_piece(pid, forme, x0, y0, True)
             ids_fixes.add(pid)
 
         # 3. Détermination des pièces libres restantes à placer par le solveur
         self.pieces_libres = sorted(set(PIECES.keys()) - ids_fixes)
         self.pieces_a_placer = {pid: PIECES[pid]["coords"] for pid in self.pieces_libres}
 
-    def get_donnees_solver(self) -> dict[str, Any]:
+    def get_donnees(self) -> dict[str, Any]:
         """Retourne un dictionnaire clé en main contenant tout ce dont le solveur a besoin."""
         return {
             "id": self.id,
