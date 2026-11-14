@@ -64,13 +64,13 @@ def afficher_difficulte_2d_orthogonal(fenetre):
                 if bouton.texte == "STARTER":
                     return "starter_orthogonal"
                 elif bouton.texte == "JUNIOR":
-                    return "difficulte_2d_orthogonal"
+                    return "junior_orthogonal"
                 elif bouton.texte == "EXPERT":
-                    return "difficulte_2d_orthogonal"
+                    return "expert_orthogonal"
                 elif bouton.texte == "MASTER":
-                    return "difficulte_2d_orthogonal"
+                    return "master_orthogonal"
                 elif bouton.texte == "WIZARD":
-                    return "difficulte_2d_orthogonal"
+                    return "wizard_orthogonal"
 
         # 5. Affichage dynamique
         fenetre.fill(BLANC)

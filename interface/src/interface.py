@@ -7,6 +7,22 @@ from modes.mode_2d_diagonal.difficulte.difficulte_2d_diagonal import afficher_di
 from modes.mode_3d_pyramidal.difficulte.difficulte_3d_pyramidal import afficher_difficulte_3d_pyramidal
 
 from modes.mode_2d_orthogonal.grilles.starter_orthogonal import afficher_grilles_starter_2d_orthogonal
+from modes.mode_2d_orthogonal.grilles.junior_orthogonal import afficher_grilles_junior_2d_orthogonal
+from modes.mode_2d_orthogonal.grilles.expert_orthogonal import afficher_grilles_expert_2d_orthogonal
+from modes.mode_2d_orthogonal.grilles.master_orthogonal import afficher_grilles_master_2d_orthogonal
+from modes.mode_2d_orthogonal.grilles.wizard_orthogonal import afficher_grilles_wizard_2d_orthogonal
+
+from modes.mode_3d_pyramidal.grilles.starter_pyramidal import afficher_grilles_starter_3d_pyramidal
+from modes.mode_3d_pyramidal.grilles.junior_pyramidal import afficher_grilles_junior_3d_pyramidal
+from modes.mode_3d_pyramidal.grilles.expert_pyramidal import afficher_grilles_expert_3d_pyramidal
+from modes.mode_3d_pyramidal.grilles.master_pyramidal import afficher_grilles_master_3d_pyramidal
+from modes.mode_3d_pyramidal.grilles.wizard_pyramidal import afficher_grilles_wizard_3d_pyramidal
+
+from modes.mode_2d_diagonal.grilles.starter_diagonal import afficher_grilles_starter_2d_diagonal
+from modes.mode_2d_diagonal.grilles.junior_diagonal import afficher_grilles_junior_2d_diagonal
+from modes.mode_2d_diagonal.grilles.expert_diagonal import afficher_grilles_expert_2d_diagonal
+from modes.mode_2d_diagonal.grilles.master_diagonal import afficher_grilles_master_2d_diagonal
+from modes.mode_2d_diagonal.grilles.wizard_diagonal import afficher_grilles_wizard_2d_diagonal
 
 # 1. Initialisation globale
 pygame.init()
@@ -52,6 +68,76 @@ while etat_actuel != "quitter":
           # On passe le contrôle à la sélection du mode
           print("starter_orthogonal")
           etat_actuel = afficher_grilles_starter_2d_orthogonal(fenetre)
+
+  elif etat_actuel == "junior_orthogonal":
+            # On passe le contrôle à la sélection du mode
+            print("junior_orthogonal")
+            etat_actuel = afficher_grilles_junior_2d_orthogonal(fenetre)
+
+  elif etat_actuel == "expert_orthogonal":
+              # On passe le contrôle à la sélection du mode
+              print("expert_orthogonal")
+              etat_actuel = afficher_grilles_expert_2d_orthogonal(fenetre)
+
+  elif etat_actuel == "master_orthogonal":
+                # On passe le contrôle à la sélection du mode
+                print("master_orthogonal")
+                etat_actuel = afficher_grilles_master_2d_orthogonal(fenetre)
+
+  elif etat_actuel == "wizard_orthogonal":
+                  # On passe le contrôle à la sélection du mode
+                  print("wizard_orthogonal")
+                  etat_actuel = afficher_grilles_wizard_2d_orthogonal(fenetre)
+
+  elif etat_actuel == "starter_diagonal":
+            # On passe le contrôle à la sélection du mode
+            print("starter_diagonal")
+            etat_actuel = afficher_grilles_starter_2d_diagonal(fenetre)
+  
+  elif etat_actuel == "junior_diagonal":
+            # On passe le contrôle à la sélection du mode
+            print("junior_diagonal")
+            etat_actuel = afficher_grilles_junior_2d_diagonal(fenetre)
+
+  elif etat_actuel == "expert_diagonal":
+              # On passe le contrôle à la sélection du mode
+              print("expert_diagonal")
+              etat_actuel = afficher_grilles_expert_2d_diagonal(fenetre)
+
+  elif etat_actuel == "master_diagonal":
+                # On passe le contrôle à la sélection du mode
+                print("master_diagonal")
+                etat_actuel = afficher_grilles_master_2d_diagonal(fenetre)
+
+  elif etat_actuel == "wizard_diagonal":
+                  # On passe le contrôle à la sélection du mode
+                  print("wizard_diagonal")
+                  etat_actuel = afficher_grilles_wizard_2d_diagonal(fenetre)
+
+  elif etat_actuel == "starter_pyramidal":
+              # On passe le contrôle à la sélection du mode
+              print("starter_pyramidal")
+              etat_actuel = afficher_grilles_starter_3d_pyramidal(fenetre)
+    
+  elif etat_actuel == "junior_pyramidal":
+            # On passe le contrôle à la sélection du mode
+            print("junior_pyramidal")
+            etat_actuel = afficher_grilles_junior_3d_pyramidal(fenetre)
+
+  elif etat_actuel == "expert_pyramidal":
+              # On passe le contrôle à la sélection du mode
+              print("expert_pyramidal")
+              etat_actuel = afficher_grilles_expert_3d_pyramidal(fenetre)
+
+  elif etat_actuel == "master_pyramidal":
+                # On passe le contrôle à la sélection du mode
+                print("master_pyramidal")
+                etat_actuel = afficher_grilles_master_3d_pyramidal(fenetre)
+
+  elif etat_actuel == "wizard_pyramidal":
+                  # On passe le contrôle à la sélection du mode
+                  print("wizard_pyramidal")
+                  etat_actuel = afficher_grilles_wizard_3d_pyramidal(fenetre)
 
   elif etat_actuel == "jeu":
     # Exemple pour plus tard : etat_actuel = lancer_jeu(fenetre)

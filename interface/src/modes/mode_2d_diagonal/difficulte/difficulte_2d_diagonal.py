@@ -64,13 +64,13 @@ def afficher_difficulte_2d_diagonal(fenetre):
                 if bouton.texte == "STARTER":
                     return "starter_diagonal"
                 elif bouton.texte == "JUNIOR":
-                    return "difficulte_2d_diagonal"
+                    return "junior_diagonal"
                 elif bouton.texte == "EXPERT":
-                    return "difficulte_2d_diagonal"
+                    return "expert_diagonal"
                 elif bouton.texte == "MASTER":
-                    return "difficulte_2d_diagonal"
+                    return "master_diagonal"
                 elif bouton.texte == "WIZARD":
-                    return "difficulte_2d_diagonal"
+                    return "wizard_diagonal"
 
         # 5. Affichage dynamique
         fenetre.fill(BLANC)

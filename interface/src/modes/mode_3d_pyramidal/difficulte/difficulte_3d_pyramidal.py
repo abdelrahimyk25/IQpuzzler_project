@@ -64,13 +64,13 @@ def afficher_difficulte_3d_pyramidal(fenetre):
                 if bouton.texte == "STARTER":
                     return "starter_pyramidal"
                 elif bouton.texte == "JUNIOR":
-                    return "difficulte_3d_pyramidal"
+                    return "junior_pyramidal"
                 elif bouton.texte == "EXPERT":
-                    return "difficulte_3d_pyramidal"
+                    return "expert_pyramidal"
                 elif bouton.texte == "MASTER":
-                    return "difficulte_3d_pyramidal"
+                    return "master_pyramidal"
                 elif bouton.texte == "WIZARD":
-                    return "difficulte_3d_pyramidal"
+                    return "wizard_pyramidal"
 
         # 5. Affichage dynamique
         fenetre.fill(BLANC)
