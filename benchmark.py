@@ -1,296 +1,128 @@
 """
+benchmark.py - Banc d'essai et statistiques de performance du solveur (IQ Puzzler Pro).
+Rôle : Membre 3 (Banque de défis, Tests & Benchmark).
 
-Missions :
-- Lancer l'algorithme de résolution sur une série de défis (ex: 12, 24, 64 ou 188 défis).
-- Mesurer les temps d'exécution (min, max, moyen), les nœuds explorés et les backtracks.
-- Vérifier la validité des solutions trouvées face à la solution officielle.
-- Générer un rapport statistique consolidé par niveau de difficulté (Starter, Junior, Expert, Master, Wizard).
-- Exporter les résultats au format JSON et texte.
+Fonctionnalités :
+- Exécute les défis du mode RECTANGLE (1 à 64).
+- Trie par difficulté : Starter, Junior, Expert, Master, Wizard.
+- Calcule et affiche les moyennes (temps de calcul, nœuds explorés, taux de succès).
 """
 
 from __future__ import annotations
-
+import builtins
 import json
 import time
-from dataclasses import asdict, dataclass
 from pathlib import Path
-from typing import Any, Callable
 
-import defis
-
-# Import du solveur du projet s'il existe, sinon solveur de secours
+# Neutralisation de l'éventuel exit() lors de l'import de defis.py
+_vrai_exit = builtins.exit
+builtins.exit = lambda *a: None
 try:
-    from solver import resoudre_csp
-except ImportError:
-    try:
-        from main import resoudre_csp
-    except ImportError:
-        resoudre_csp = None
+    import defis
+    from pieces import PIECES
+    from plateau import Plateau
+    from solver import SolverCSP
+finally:
+    builtins.exit = _vrai_exit
+
+FICHIER_DEFIS = Path(__file__).parent / "defis.json"
+DIFFICULTES = ["Starter", "Junior", "Expert", "Master", "Wizard"]
 
 
-@dataclass
-class ResultatDefi:
-    id_defi: int
-    mode: str
-    difficulte: str
-    succes: bool
-    temps_ms: float
-    noeuds: int = 0
-    backtracks: int = 0
-    conforme_officiel: bool = False
-    message: str = ""
+def preparer_defi(id_defi: int):
+    """Charge le défi et initialise le plateau officiel pour le solveur."""
+    defi = defis.Defi(id_defi)
+    defi.id_defi = int(defi.id)
+    plateau = Plateau()
+    poses = set()
+
+    for p in defi.pieces_fixes:
+        forme = [tuple(c) for c in p["forme"]]
+        plateau.poser_piece(p["id"], forme, p["x"], p["y"], verrouillee=True)
+        poses.add(p["id"])
+
+    defi.plateau = plateau
+    defi.pieces_libres = sorted(set(PIECES.keys()) - poses)
+    return defi
 
 
-@dataclass
-class StatsDifficulte:
-    difficulte: str
-    total: int = 0
-    reussis: int = 0
-    taux_succes: float = 0.0
-    temps_moyen_ms: float = 0.0
-    temps_min_ms: float = 0.0
-    temps_max_ms: float = 0.0
-    noeuds_moyen: float = 0.0
-    backtracks_moyen: float = 0.0
+def executer_benchmark():
+    """Lance le solveur sur tous les défis Rectangle et calcule les moyennes par difficulté."""
+    with open(FICHIER_DEFIS, "r", encoding="utf-8") as f:
+        tous_defis = json.load(f)
 
+    # 1. Regroupement des défis Rectangle par difficulté
+    groupes = {d: [] for d in DIFFICULTES}
+    for did, data in tous_defis.items():
+        if data.get("mode") == "rectangle":
+            diff = data.get("difficulte", "Starter").capitalize()
+            if diff in groupes:
+                groupes[diff].append(int(did))
 
-def resoudre_avec_timeout(
-    solveur_fn: Callable, plateau: Any, timeout_sec: float = 10.0
-) -> tuple[bool, Any, dict[str, Any]]:
-    """Exécute le solveur en mesurant précisément le temps."""
-    t0 = time.perf_counter()
-    metriques_defaut = {"noeuds": 0, "backtracks": 0}
+    stats_diff = {}
 
-    try:
-        # Signature contrat : resoudre_csp(plateau, utiliser_heuristiques=True)
-        res = solveur_fn(plateau)
-        t1 = time.perf_counter()
-        temps_ms = (t1 - t0) * 1000.0
+    print("=" * 68)
+    print("   BANC D'ESSAI AUTOMATISÉ - MODE RECTANGLE (IQ-PUZZLER PRO)")
+    print("=" * 68)
 
-        if isinstance(res, tuple):
-            succes = bool(res[0])
-            plateau_resolu = res[1] if len(res) > 1 else plateau
-            metriques = res[2] if len(res) > 2 and isinstance(res[2], dict) else metriques_defaut
-        elif isinstance(res, bool):
-            succes = res
-            plateau_resolu = plateau
-            metriques = metriques_defaut
-        else:
-            succes = False
-            plateau_resolu = plateau
-            metriques = metriques_defaut
-
-        metriques["temps_ms"] = temps_ms
-        return succes, plateau_resolu, metriques
-
-    except Exception as e:
-        t1 = time.perf_counter()
-        return False, plateau, {"noeuds": 0, "backtracks": 0, "temps_ms": (t1 - t0) * 1000.0, "erreur": str(e)}
-
-
-def executer_benchmark(
-    liste_defis: list[int] | None = None,
-    difficulte_filtre: str | None = None,
-    mode_filtre: str = "rectangle",
-    solveur_fn: Callable | None = None,
-    timeout_sec: float = 10.0,
-    afficher_progression: bool = True,
-) -> tuple[list[ResultatDefi], dict[str, StatsDifficulte]]:
-    """
-    Lance le banc d'essai complet sur la sélection de défis demandée.
-    """
-    tous_defis = defis.charger_tous_les_defis()
-
-    # Sélection des IDs
-    if liste_defis is None:
-        ids_candidats = []
-        for str_id, data in tous_defis.items():
-            if mode_filtre and data.get("mode") != mode_filtre:
-                continue
-            if difficulte_filtre and data.get("difficulte", "").lower() != difficulte_filtre.lower():
-                continue
-            ids_candidats.append(int(str_id))
-        ids_candidats.sort()
-    else:
-        ids_candidats = sorted(liste_defis)
-
-    if afficher_progression:
-        print(f"\n========================================================")
-        print(f" DÉMARRAGE DU BENCHMARK : {len(ids_candidats)} DÉFI(S) SÉLECTIONNÉ(S)")
-        print(f" Mode : {mode_filtre} | Difficulté : {difficulte_filtre or 'Toutes'}")
-        print(f"========================================================\n")
-
-    resultats: list[ResultatDefi] = []
-
-    for id_defi in ids_candidats:
-        info = tous_defis[str(id_defi)]
-        mode = info.get("mode", "rectangle")
-        diff = info.get("difficulte", "Inconnue")
-
-        # 1. Vérification d'intégrité préliminaire
-        valide, msg_integ = defis.verifier_integrite_defi(id_defi)
-        if not valide:
-            res_err = ResultatDefi(
-                id_defi=id_defi,
-                mode=mode,
-                difficulte=diff,
-                succes=False,
-                temps_ms=0.0,
-                message=f"Intégrité invalide: {msg_integ}",
-            )
-            resultats.append(res_err)
-            if afficher_progression:
-                print(f"[Défi #{id_defi:03d} | {diff:8s}] ❌ ERREUR INTÉGRITÉ : {msg_integ}")
+    # 2. Exécution niveau par niveau
+    for diff in DIFFICULTES:
+        ids = sorted(groupes[diff])
+        if not ids:
             continue
 
-        # 2. Initialisation du plateau
-        try:
-            plateau = defis.initialiser_plateau_defi(id_defi)
-        except Exception as e:
-            resultats.append(
-                ResultatDefi(
-                    id_defi=id_defi,
-                    mode=mode,
-                    difficulte=diff,
-                    succes=False,
-                    temps_ms=0.0,
-                    message=f"Erreur init plateau: {e}",
-                )
-            )
-            continue
+        print(f"\n▶ [{diff.upper()}] ({len(ids)} défis)")
+        print("-" * 68)
 
-        # 3. Résolution
-        if solveur_fn is not None:
-            succes, plateau_resolu, metriques = resoudre_avec_timeout(
-                solveur_fn, plateau, timeout_sec=timeout_sec
-            )
-            conforme = False
-            if succes:
-                conforme = defis.verifier_solution(plateau_resolu, id_defi)
+        temps_liste = []
+        noeuds_liste = []
+        succes_count = 0
 
-            res = ResultatDefi(
-                id_defi=id_defi,
-                mode=mode,
-                difficulte=diff,
-                succes=succes,
-                temps_ms=metriques.get("temps_ms", 0.0),
-                noeuds=metriques.get("noeuds", 0),
-                backtracks=metriques.get("backtracks", 0),
-                conforme_officiel=conforme,
-                message=metriques.get("erreur", "OK" if succes else "Échec solveur"),
-            )
-        else:
-            # Mode audit de la banque de données (chargement & validation sans solveur externe)
-            res = ResultatDefi(
-                id_defi=id_defi,
-                mode=mode,
-                difficulte=diff,
-                succes=True,
-                temps_ms=0.1,
-                conforme_officiel=True,
-                message="Banque validée (pas de solveur fourni)",
-            )
+        for did in ids:
+            try:
+                defi = preparer_defi(did)
+                t0 = time.perf_counter()
+                solver = SolverCSP(defi)
+                ok, metriques = solver.resoudre()
+                t_ms = (time.perf_counter() - t0) * 1000.0
+                noeuds = metriques.get("noeuds_explores", 0)
+            except Exception:
+                ok, t_ms, noeuds = False, 0.0, 0
 
-        resultats.append(res)
+            if ok:
+                succes_count += 1
+                temps_liste.append(t_ms)
+                noeuds_liste.append(noeuds)
+                symbole = "✅ SUCCÈS"
+            else:
+                symbole = "❌ ÉCHEC "
 
-        if afficher_progression:
-            symb = "✅" if res.succes else "❌"
-            conf = " (Officiel OK)" if res.conforme_officiel else ""
-            print(
-                f"[Défi #{id_defi:03d} | {diff:8s}] {symb} Temps: {res.temps_ms:7.2f} ms | "
-                f"Nœuds: {res.noeuds:6d} | Backtracks: {res.backtracks:6d}{conf}"
-            )
+            print(f"  Défi #{did:03d} | {symbole} | Temps: {t_ms:6.2f} ms | Nœuds: {noeuds:5d}")
 
-    # Consolidation des statistiques par niveau
-    stats_par_diff: dict[str, StatsDifficulte] = {}
-    ordre_diffs = ["Starter", "Junior", "Expert", "Master", "Wizard"]
+        # Calcul des moyennes pour la difficulté
+        nb_ok = len(temps_liste)
+        stats_diff[diff] = {
+            "total": len(ids),
+            "succes": succes_count,
+            "taux": (succes_count / len(ids)) * 100.0,
+            "tps_moyen": sum(temps_liste) / nb_ok if nb_ok else 0.0,
+            "noeuds_moyen": sum(noeuds_liste) / nb_ok if nb_ok else 0.0,
+        }
 
-    for d in ordre_diffs:
-        groupe = [r for r in resultats if r.difficulte.lower() == d.lower()]
-        if not groupe:
-            continue
+    # 3. Tableau de synthèse final
+    print("\n" + "=" * 68)
+    print("           SYNTHÈSE DES MOYENNES PAR DIFFICULTÉ")
+    print("=" * 68)
+    print(f"{'Difficulté':<12} | {'Succès':<10} | {'Taux':<8} | {'Temps moyen':<13} | {'Nœuds moy.'}")
+    print("-" * 68)
 
-        total = len(groupe)
-        reussis = sum(1 for r in groupe if r.succes)
-        temps = [r.temps_ms for r in groupe if r.succes] or [0.0]
-        noeuds = [r.noeuds for r in groupe]
-        btracks = [r.backtracks for r in groupe]
-
-        stats_par_diff[d] = StatsDifficulte(
-            difficulte=d,
-            total=total,
-            reussis=reussis,
-            taux_succes=round((reussis / total) * 100.0, 1),
-            temps_moyen_ms=round(sum(temps) / len(temps), 2),
-            temps_min_ms=round(min(temps), 2),
-            temps_max_ms=round(max(temps), 2),
-            noeuds_moyen=round(sum(noeuds) / total, 1),
-            backtracks_moyen=round(sum(btracks) / total, 1),
-        )
-
-    return resultats, stats_par_diff
-
-
-def afficher_rapport_statistique(stats_par_diff: dict[str, StatsDifficulte]) -> None:
-    """Affiche un tableau récapitulatif dans la console."""
-    print("\n" + "=" * 80)
-    print("                      RAPPORT STATISTIQUE DU BENCHMARK")
-    print("=" * 80)
-    print(
-        f"{'Niveau':<10} | {'Total':<6} | {'Succès':<7} | {'Taux':<7} | "
-        f"{'Tps Moy (ms)':<13} | {'Tps Min':<9} | {'Tps Max':<9} | {'Nœuds Moy':<10}"
-    )
-    print("-" * 80)
-
-    total_global = 0
-    total_reussis = 0
-    temps_cumul = 0.0
-
-    for d, s in stats_par_diff.items():
-        total_global += s.total
-        total_reussis += s.reussis
-        temps_cumul += s.temps_moyen_ms * s.reussis
-
+    for diff, s in stats_diff.items():
         print(
-            f"{s.difficulte:<10} | {s.total:<6d} | {s.reussis:<7d} | {s.taux_succes:>5.1f} % | "
-            f"{s.temps_moyen_ms:>11.2f} ms | {s.temps_min_ms:>7.2f} ms | {s.temps_max_ms:>7.2f} ms | {s.noeuds_moyen:>10.1f}"
+            f"{diff:<12} | {s['succes']:>2d}/{s['total']:<2d}      | "
+            f"{s['taux']:>5.1f} % | {s['tps_moyen']:>8.2f} ms    | {s['noeuds_moyen']:>8.1f}"
         )
-
-    print("-" * 80)
-    taux_global = round((total_reussis / total_global) * 100.0, 1) if total_global else 0.0
-    temps_moyen_global = round(temps_cumul / total_reussis, 2) if total_reussis else 0.0
-    print(
-        f"{'GLOBAL':<10} | {total_global:<6d} | {total_reussis:<7d} | {taux_global:>5.1f} % | "
-        f"{temps_moyen_global:>11.2f} ms | {'-':>9} | {'-':>9} |"
-    )
-    print("=" * 80 + "\n")
-
-
-def exporter_rapport(
-    resultats: list[ResultatDefi],
-    stats: dict[str, StatsDifficulte],
-    chemin_fichier: str | Path = "benchmark_resultats.json",
-) -> None:
-    """Sauvegarde le rapport complet au format JSON."""
-    chemin = Path(chemin_fichier)
-    donnees = {
-        "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
-        "statistiques_par_niveau": {k: asdict(v) for k, v in stats.items()},
-        "details_defis": [asdict(r) for r in resultats],
-    }
-    with open(chemin, "w", encoding="utf-8") as f:
-        json.dump(donnees, f, indent=2, ensure_ascii=False)
-    print(f"📁 Rapport de benchmark exporté dans : {chemin.resolve()}")
+    print("=" * 68)
 
 
 if __name__ == "__main__":
-    # Test d'exécution du benchmark sur les 24 premiers défis (Starter + Junior)
-    print("Exécution du benchmark...")
-    # Si le solveur officiel resoudre_csp existe, on le passe, sinon audit
-    resultats, stats = executer_benchmark(
-        liste_defis=list(range(1, 25)),
-        solveur_fn=resoudre_csp,
-        afficher_progression=True,
-    )
-    afficher_rapport_statistique(stats)
-    exporter_rapport(resultats, stats)
+    executer_benchmark()

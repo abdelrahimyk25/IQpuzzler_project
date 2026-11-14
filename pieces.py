@@ -41,7 +41,7 @@ PIECES = {
  # G - Bleu foncé (4 billes)
  # . ● ● ●
  # ● . . .
- "G":{"nom":"Bluef","color":"#1B1464","coords":[(1,0),(2,0),(3,0),(0,1)]},
+ "G":{"nom":"Bluef","color":"#1B1464","coords":[(0,0),(1,0),(2,0),(0,1)]},
 
  # H - Bleu cyan (5 billes en grand L)
  # . . ●
