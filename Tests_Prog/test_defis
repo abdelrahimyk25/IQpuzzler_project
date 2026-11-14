@@ -1,3 +1,7 @@
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 from CSP.defis import Defi
 
 # Test d'extraction des données pour le défi 1

@@ -16,6 +16,13 @@ import re
 import sys
 from pathlib import Path
 
+PDF_PATH = (
+    PROJECT_ROOT
+    / "Aide PDF"
+    / "SmartGames_IQ_Puzzler_Pro_XXL_IQ_Puzzler_Pro_XXL_-_Livret_de_défis (1) (1).pdf"
+)
+JSON_PATH = PROJECT_ROOT / "CSP" / "defis.json"
+
 import pymupdf as fitz
 from PIL import Image
 

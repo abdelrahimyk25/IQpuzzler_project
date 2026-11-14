@@ -1,4 +1,8 @@
-from pieces import *
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from Game_Element.pieces import PIECES, normaliser, rotation, miroir, generate_catalogue_orient
 
 piece = PIECES["I"]["coords"]
 

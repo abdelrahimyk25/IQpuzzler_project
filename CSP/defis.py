@@ -10,7 +10,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 from typing import Any
-from Game_Element.plateau import Plateau, PIECES
+from Game_Element.plateau import Plateau
+from Game_Element.pieces import PIECES
 
 FICHIER_DEFIS = Path(__file__).parent / "defis.json"
 

@@ -16,7 +16,8 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Callable
 
-import CSP.defis as defis
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 # Import du solveur du projet s'il existe, sinon solveur de secours
 try:
