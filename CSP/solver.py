@@ -3,9 +3,9 @@ import time
 from collections import deque
 from typing import Any
 
-from pieces import PIECES, generate_catalogue_orient
-from plateau import Plateau, HAUTEUR, LARGEUR
-from defis import Defi
+from Game_Element.pieces import PIECES, generate_catalogue_orient
+from Game_Element.plateau import Plateau, HAUTEUR, LARGEUR
+from CSP.defis import Defi
 
 CATALOGUE = generate_catalogue_orient()
 

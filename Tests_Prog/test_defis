@@ -1,4 +1,4 @@
-from defis import Defi
+from CSP.defis import Defi
 
 # Test d'extraction des données pour le défi 1
 defi = Defi(1)

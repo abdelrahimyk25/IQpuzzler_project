@@ -16,11 +16,11 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Callable
 
-import defis
+import CSP.defis as defis
 
 # Import du solveur du projet s'il existe, sinon solveur de secours
 try:
-    from solver import resoudre_csp
+    from CSP.solver import resoudre_csp
 except ImportError:
     try:
         from main import resoudre_csp
