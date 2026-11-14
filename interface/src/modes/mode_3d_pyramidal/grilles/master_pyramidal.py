@@ -21,20 +21,20 @@ def afficher_grilles_master_3d_pyramidal(fenetre):
     # Instanciation initiale des 12 boutons images
     boutons = [
         # Colonne 1
-        Bouton_image("1", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/1.png", "IQpuzzler_project/interface/src/assets/1.png"),
-        Bouton_image("2", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/2.png", "IQpuzzler_project/interface/src/assets/2.png"),
-        Bouton_image("3", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/3.png", "IQpuzzler_project/interface/src/assets/3.png"),
-        Bouton_image("4", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/4.png", "IQpuzzler_project/interface/src/assets/4.png"),
+        Bouton_image("165", 0, 0, 78, 211, "IQpuzzler_project/interface/src/assets/165.png", "IQpuzzler_project/interface/src/assets/165.png"),
+        Bouton_image("166", 0, 0, 78, 211, "IQpuzzler_project/interface/src/assets/166.png", "IQpuzzler_project/interface/src/assets/166.png"),
+        Bouton_image("167", 0, 0, 78, 211, "IQpuzzler_project/interface/src/assets/167.png", "IQpuzzler_project/interface/src/assets/167.png"),
+        Bouton_image("168", 0, 0, 78, 211, "IQpuzzler_project/interface/src/assets/168.png", "IQpuzzler_project/interface/src/assets/168.png"),
         # Colonne 2
-        Bouton_image("5", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/5.png", "IQpuzzler_project/interface/src/assets/5.png"),
-        Bouton_image("6", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/6.png", "IQpuzzler_project/interface/src/assets/6.png"),
-        Bouton_image("7", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/7.png", "IQpuzzler_project/interface/src/assets/7.png"),
-        Bouton_image("8", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/8.png", "IQpuzzler_project/interface/src/assets/8.png"),
+        Bouton_image("169", 0, 0, 78, 211, "IQpuzzler_project/interface/src/assets/169.png", "IQpuzzler_project/interface/src/assets/169.png"),
+        Bouton_image("170", 0, 0, 78, 211, "IQpuzzler_project/interface/src/assets/170.png", "IQpuzzler_project/interface/src/assets/170.png"),
+        Bouton_image("171", 0, 0, 78, 211, "IQpuzzler_project/interface/src/assets/171.png", "IQpuzzler_project/interface/src/assets/171.png"),
+        Bouton_image("172", 0, 0, 78, 211, "IQpuzzler_project/interface/src/assets/172.png", "IQpuzzler_project/interface/src/assets/172.png"),
         # Colonne 3
-        Bouton_image("9", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/9.png", "IQpuzzler_project/interface/src/assets/9.png"),
-        Bouton_image("10", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/10.png", "IQpuzzler_project/interface/src/assets/10.png"),
-        Bouton_image("11", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/11.png", "IQpuzzler_project/interface/src/assets/11.png"),
-        Bouton_image("12", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/12.png", "IQpuzzler_project/interface/src/assets/12.png")
+        Bouton_image("173", 0, 0, 78, 211, "IQpuzzler_project/interface/src/assets/173.png", "IQpuzzler_project/interface/src/assets/173.png"),
+        Bouton_image("174", 0, 0, 78, 211, "IQpuzzler_project/interface/src/assets/174.png", "IQpuzzler_project/interface/src/assets/174.png"),
+        Bouton_image("175", 0, 0, 78, 211, "IQpuzzler_project/interface/src/assets/175.png", "IQpuzzler_project/interface/src/assets/175.png"),
+        Bouton_image("176", 0, 0, 78, 211, "IQpuzzler_project/interface/src/assets/176.png", "IQpuzzler_project/interface/src/assets/176.png")
     ]
 
     en_cours = True
@@ -43,17 +43,16 @@ def afficher_grilles_master_3d_pyramidal(fenetre):
         largeur_f = fenetre.get_width()
         hauteur_f = fenetre.get_height()
 
-        # 2. Calculs pour centrer la grille de 3 colonnes x 4 lignes
-        largeur_b, hauteur_b = 180, 100
-        espacement_x, espacement_y = 230, 115
+        # Dimensions des boutons (réduites en largeur pour que 6 colonnes rentrent à l'écran)
+        largeur_b, hauteur_b = 78, 211
+        espacement_x, espacement_y = 115, 220
 
-        # Origine de la grille centrée par rapport au milieu de l'écran
-        x_depart = (largeur_f // 2) - espacement_x - (largeur_b // 2)
-        y_depart = (hauteur_f // 2) - int(espacement_y * 1.5) - (hauteur_b // 2)
+        x_depart = (largeur_f // 2) - int(espacement_x * 2.5) - (largeur_b // 2)
+        y_depart = (hauteur_f // 2) - (espacement_y // 2) - (hauteur_b // 2)
 
         for i, bouton in enumerate(boutons):
-            colonne = i // 4  # 0, 1, 2
-            ligne = i % 4     # 0, 1, 2, 3
+            colonne = i // 2  # 0, 1, 2, 3, 4, 5 (6 colonnes)
+            ligne = i % 2     # 0, 1 (2 lignes)
             bouton.rect.x = x_depart + (colonne * espacement_x)
             bouton.rect.y = y_depart + (ligne * espacement_y)
 

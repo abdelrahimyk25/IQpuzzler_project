@@ -1,4 +1,4 @@
 from PIL import Image
 
-img = Image.open("assets/9.png")
+img = Image.open("IQpuzzler_project/interface/src/assets/129.png")
 print(img.size)

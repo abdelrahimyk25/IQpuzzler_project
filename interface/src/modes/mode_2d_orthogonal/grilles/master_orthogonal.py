@@ -20,22 +20,27 @@ def afficher_grilles_master_2d_orthogonal(fenetre):
 
     # Instanciation initiale des 12 boutons images
     boutons = [
-        # Colonne 1
-        Bouton_image("1", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/1.png", "IQpuzzler_project/interface/src/assets/1.png"),
-        Bouton_image("2", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/2.png", "IQpuzzler_project/interface/src/assets/2.png"),
-        Bouton_image("3", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/3.png", "IQpuzzler_project/interface/src/assets/3.png"),
-        Bouton_image("4", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/4.png", "IQpuzzler_project/interface/src/assets/4.png"),
-        # Colonne 2
-        Bouton_image("5", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/5.png", "IQpuzzler_project/interface/src/assets/5.png"),
-        Bouton_image("6", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/6.png", "IQpuzzler_project/interface/src/assets/6.png"),
-        Bouton_image("7", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/7.png", "IQpuzzler_project/interface/src/assets/7.png"),
-        Bouton_image("8", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/8.png", "IQpuzzler_project/interface/src/assets/8.png"),
-        # Colonne 3
-        Bouton_image("9", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/9.png", "IQpuzzler_project/interface/src/assets/9.png"),
-        Bouton_image("10", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/10.png", "IQpuzzler_project/interface/src/assets/10.png"),
-        Bouton_image("11", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/11.png", "IQpuzzler_project/interface/src/assets/11.png"),
-        Bouton_image("12", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/12.png", "IQpuzzler_project/interface/src/assets/12.png")
-    ]
+    # Colonne 1
+    Bouton_image("41", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/41.png", "IQpuzzler_project/interface/src/assets/41.png"),
+    Bouton_image("42", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/42.png", "IQpuzzler_project/interface/src/assets/42.png"),
+    Bouton_image("43", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/43.png", "IQpuzzler_project/interface/src/assets/43.png"),
+    Bouton_image("44", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/44.png", "IQpuzzler_project/interface/src/assets/44.png"),
+    # Colonne 2
+    Bouton_image("45", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/45.png", "IQpuzzler_project/interface/src/assets/45.png"),
+    Bouton_image("46", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/46.png", "IQpuzzler_project/interface/src/assets/46.png"),
+    Bouton_image("47", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/47.png", "IQpuzzler_project/interface/src/assets/47.png"),
+    Bouton_image("48", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/48.png", "IQpuzzler_project/interface/src/assets/48.png"),
+    # Colonne 3
+    Bouton_image("49", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/49.png", "IQpuzzler_project/interface/src/assets/49.png"),
+    Bouton_image("50", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/50.png", "IQpuzzler_project/interface/src/assets/50.png"),
+    Bouton_image("51", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/51.png", "IQpuzzler_project/interface/src/assets/51.png"),
+    Bouton_image("52", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/52.png", "IQpuzzler_project/interface/src/assets/52.png"),
+    # Colonne 4
+    Bouton_image("53", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/53.png", "IQpuzzler_project/interface/src/assets/53.png"),
+    Bouton_image("54", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/54.png", "IQpuzzler_project/interface/src/assets/54.png"),
+    Bouton_image("55", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/55.png", "IQpuzzler_project/interface/src/assets/55.png"),
+    Bouton_image("56", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/56.png", "IQpuzzler_project/interface/src/assets/56.png")
+]
 
     en_cours = True
     while en_cours:
@@ -45,15 +50,15 @@ def afficher_grilles_master_2d_orthogonal(fenetre):
 
         # 2. Calculs pour centrer la grille de 3 colonnes x 4 lignes
         largeur_b, hauteur_b = 180, 100
-        espacement_x, espacement_y = 230, 115
+        espacement_x, espacement_y = 200, 115
 
-        # Origine de la grille centrée par rapport au milieu de l'écran
-        x_depart = (largeur_f // 2) - espacement_x - (largeur_b // 2)
+        # MODIFICATION : Décalage de 1.5 colonne et 1.5 ligne pour centrer un bloc 4x4
+        x_depart = (largeur_f // 2) - int(espacement_x * 1.5) - (largeur_b // 2)
         y_depart = (hauteur_f // 2) - int(espacement_y * 1.5) - (hauteur_b // 2)
 
         for i, bouton in enumerate(boutons):
-            colonne = i // 4  # 0, 1, 2
-            ligne = i % 4     # 0, 1, 2, 3
+            colonne = i // 4  # 0, 1, 2, 3 (4 colonnes)
+            ligne = i % 4     # 0, 1, 2, 3 (4 lignes)
             bouton.rect.x = x_depart + (colonne * espacement_x)
             bouton.rect.y = y_depart + (ligne * espacement_y)
 

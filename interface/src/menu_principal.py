@@ -63,7 +63,7 @@ def afficher_menu_principal(fenetre):
         fenetre.fill(BLANC)
 
         # Titre centré à 15% de la hauteur de l'écran
-        titre_surface = police_titre.render("MON JEU", True, NOIR)
+        titre_surface = police_titre.render("IQ PUZZLER PRO XXL", True, NOIR)
         titre_rect = titre_surface.get_rect(center=(largeur_f // 2, int(hauteur_f * 0.15)))
         fenetre.blit(titre_surface, titre_rect)
 

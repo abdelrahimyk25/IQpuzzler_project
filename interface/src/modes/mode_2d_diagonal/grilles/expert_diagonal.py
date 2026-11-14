@@ -20,21 +20,21 @@ def afficher_grilles_expert_2d_diagonal(fenetre):
 
     # Instanciation initiale des 12 boutons images
     boutons = [
-        # Colonne 1
-        Bouton_image("1", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/1.png", "IQpuzzler_project/interface/src/assets/1.png"),
-        Bouton_image("2", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/2.png", "IQpuzzler_project/interface/src/assets/2.png"),
-        Bouton_image("3", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/3.png", "IQpuzzler_project/interface/src/assets/3.png"),
-        Bouton_image("4", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/4.png", "IQpuzzler_project/interface/src/assets/4.png"),
-        # Colonne 2
-        Bouton_image("5", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/5.png", "IQpuzzler_project/interface/src/assets/5.png"),
-        Bouton_image("6", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/6.png", "IQpuzzler_project/interface/src/assets/6.png"),
-        Bouton_image("7", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/7.png", "IQpuzzler_project/interface/src/assets/7.png"),
-        Bouton_image("8", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/8.png", "IQpuzzler_project/interface/src/assets/8.png"),
-        # Colonne 3
-        Bouton_image("9", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/9.png", "IQpuzzler_project/interface/src/assets/9.png"),
-        Bouton_image("10", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/10.png", "IQpuzzler_project/interface/src/assets/10.png"),
-        Bouton_image("11", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/11.png", "IQpuzzler_project/interface/src/assets/11.png"),
-        Bouton_image("12", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/12.png", "IQpuzzler_project/interface/src/assets/12.png")
+    # Colonne 1
+    Bouton_image("85", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/85.png", "IQpuzzler_project/interface/src/assets/85.png"),
+    Bouton_image("86", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/86.png", "IQpuzzler_project/interface/src/assets/86.png"),
+    Bouton_image("87", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/87.png", "IQpuzzler_project/interface/src/assets/87.png"),
+    Bouton_image("88", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/88.png", "IQpuzzler_project/interface/src/assets/88.png"),
+    # Colonne 2
+    Bouton_image("89", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/89.png", "IQpuzzler_project/interface/src/assets/89.png"),
+    Bouton_image("90", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/90.png", "IQpuzzler_project/interface/src/assets/90.png"),
+    Bouton_image("91", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/91.png", "IQpuzzler_project/interface/src/assets/91.png"),
+    Bouton_image("92", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/92.png", "IQpuzzler_project/interface/src/assets/92.png"),
+    # Colonne 3
+    Bouton_image("93", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/93.png", "IQpuzzler_project/interface/src/assets/93.png"),
+    Bouton_image("94", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/94.png", "IQpuzzler_project/interface/src/assets/94.png"),
+    Bouton_image("95", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/95.png", "IQpuzzler_project/interface/src/assets/95.png"),
+    Bouton_image("96", 0, 0, 180, 100, "IQpuzzler_project/interface/src/assets/96.png", "IQpuzzler_project/interface/src/assets/96.png")
     ]
 
     en_cours = True

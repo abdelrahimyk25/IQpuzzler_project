@@ -28,7 +28,7 @@ from modes.mode_2d_diagonal.grilles.wizard_diagonal import afficher_grilles_wiza
 pygame.init()
 LARGEUR, HAUTEUR = 800, 600
 fenetre = pygame.display.set_mode((LARGEUR, HAUTEUR), pygame.RESIZABLE)
-pygame.display.set_caption("Mon Projet Jeu")
+pygame.display.set_caption("IQ PUZZLER PRO XXL")
 
 # 2. État initial au lancement
 etat_actuel = "menu"
