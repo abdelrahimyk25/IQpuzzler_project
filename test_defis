@@ -1,0 +1,19 @@
+from defis import Defi
+
+# Test d'extraction des données pour le défi 1
+defi = Defi(1)
+print("=" * 45)
+print(f"Extraction du {defi}")
+print("Pièces libres restantes à placer :", defi.pieces_libres)
+print("Première case vide :", defi.plateau.premiere_case_vide())
+print("\nPlateau avec pièces fixes posées :")
+defi.plateau.afficher()
+print("Solution attendue :")
+for ligne in defi.solution:
+    print(" ", ligne)
+print("=" * 45)
+
+defi = Defi(1)
+print("Pièces libres :", defi.pieces_libres)
+defi.plateau.afficher()
+exit()

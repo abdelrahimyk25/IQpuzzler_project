@@ -26,7 +26,7 @@ class SolverCSP:
         self.activer_ilots_morts = activer_ilots_morts
 
         # Tri heuristique des variables X plus lisible (taille décroissante, puis nombre d'orientations décroissant)
-        self.variables_X = sorted(defi.piece_libres, key=critere_tri_piece, reverse=True)
+        self.variables_X = sorted(defi.pieces_libres, key=critere_tri_piece, reverse=True)
 
         # Génération des domaines finis D en extension (consistance de nœud)
         self.domaines_D = self._generer_domaines_initiaux()
@@ -71,17 +71,18 @@ class SolverCSP:
 
         # Récuperation de la taille du plus petit ilot vide
         ilots_vides = self.plateau.get_ilots_vides()
-        tailles_ilots_vides = [len(ilot) for ilot in ilots_vides]
-        smallest_ilot = min(tailles_ilots_vides, default=0)
+        smallest_ilot = None
+        for ilot in ilots_vides:
+            if smallest_ilot is None or len(ilot) < smallest_ilot:
+                smallest_ilot = len(ilot)
 
-        # Récuperation de la taille des pieces restantes
+        # Récuperation de la taille de la plus petite pièce restante
+        taille_min = None
         tailles_dispo = []
         for piece_id in pieces_restantes:
-            coords_list = PIECES[piece_id]["coords"]
-            tailles_dispo.append(len(coords_list))
-
-        # Récuperation de la taille minimale des pieces restantes
-        taille_min = min(tailles_dispo)
+            if taille_min is None or len(PIECES[piece_id]["coords"]) < taille_min:
+                taille_min = len(PIECES[piece_id]["coords"])
+            tailles_dispo.append(len(PIECES[piece_id]["coords"]))
 
         # Coupure immédiate si l'îlot est plus petit que la plus petite pièce disponible
         if smallest_ilot < taille_min:
@@ -109,7 +110,7 @@ class SolverCSP:
         """
         Boucle récursive de l'algorithme Test & Generate (Backtracking).
         """
-        cible = self.plateau.premiere_case_vide
+        cible = self.plateau.premiere_case_vide()
         
         # Condition d'arrêt : toutes les cases sont remplies (instanciation complète consistante)
         if cible is None:
@@ -132,8 +133,8 @@ class SolverCSP:
                     self.noeuds_explores += 1
 
                     # Test de consistance (Contraintes C : unaire et binaire)
-                    if self._peut_placer_strict(orientation, x0, y0):
-                        self.plateau.poser_piece(pid, orientation, x0, y0, verrouillee=False)
+                    if self.plateau.peut_placer(orientation, x0, y0):
+                        self.plateau.poser_piece(pid, orientation, x0, y0, False)
 
                         # Filtrage ad hoc : vérification des îlots morts avant de descendre dans l'arbre
                         if not self.activer_ilots_morts or not self._detecter_ilot_mort(nouvelles_restantes):
@@ -157,39 +158,3 @@ class SolverCSP:
             "backtracks": self.backtracks,
             "temps_ms": self.temps_execution_ms,
         }
-
-
-# --- Fonction utilitaire directe pour main.py / benchmark.py ---
-
-def resoudre_defi(id_defi: int | str, activer_ilots_morts: bool = True) -> tuple[bool, Plateau, dict[str, Any]]:
-    """
-    Instancie un objet Defi, l'envoie au SolverCSP et retourne :
-    (succes, plateau_resolu, statistiques)
-    """
-    defi = Defi(id_defi)
-    solveur = SolverCSP(defi, activer_ilots_morts=activer_ilots_morts)
-    succes, stats = solveur.resoudre()
-    return succes, defi.plateau, stats
-
-
-# --- Test d'exécution ---
-if __name__ == "__main__":
-    # Test sur un défi Starter (#1), Expert (#25) et Wizard (#64)
-    for num_defi in (1, 25, 64):
-        print(f"================ DÉFI #{num_defi} ================")
-        mon_defi = Defi(num_defi)
-        print(f"Difficulté : {mon_defi.difficulte} | Variables X à placer ({len(mon_defi.variables_X)}) : {mon_defi.variables_X}")
-        print("\nPlateau initial :")
-        mon_defi.plateau.afficher()
-
-        solveur = SolverCSP(mon_defi, activer_ilots_morts=True)
-        trouve, metriques = solveur.resoudre()
-
-        if trouve:
-            valide = mon_defi.verifier_solution()
-            print(f"Solution trouvée en {metriques['temps_ms']} ms "
-                  f"({metriques['noeuds_explores']} nœuds, {metriques['backtracks']} backtracks) "
-                  f"| Conforme au livret : {valide}")
-            mon_defi.plateau.afficher()
-        else:
-            print("Aucune solution trouvée.")

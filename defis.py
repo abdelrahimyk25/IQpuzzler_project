@@ -10,7 +10,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 from typing import Any
-from main import Plateau, PIECES
+from plateau import Plateau, PIECES
 
 FICHIER_DEFIS = Path(__file__).parent / "defis.json"
 
@@ -31,7 +31,7 @@ class Defi:
     """
 
     def __init__(self, id_defi: int | str, fichier_json: str | Path = FICHIER_DEFIS):
-        self.id = int(id_defi)
+        self.id_defi = int(id_defi)
 
         # 1. Chargement des données du défi json 
         with open(fichier_json, "r", encoding="utf-8") as f:
@@ -65,7 +65,7 @@ class Defi:
     def get_donnees(self) -> dict[str, Any]:
         """Retourne un dictionnaire clé en main contenant tout ce dont le solveur a besoin."""
         return {
-            "id": self.id,
+            "id_defi": self.id_defi,
             "plateau": self.plateau,
             "pieces_libres": self.pieces_libres,
             "pieces_a_placer": self.pieces_a_placer,
@@ -76,27 +76,6 @@ class Defi:
 
     def __repr__(self) -> str:
         return (
-            f"Defi(id={self.id}, difficulte='{self.difficulte}', "
+            f"Defi(id={self.id_defi}, difficulte='{self.difficulte}', "
             f"fixes={len(self.pieces_fixes)}, libres={len(self.pieces_libres)})"
         )
-
-
-if __name__ == "__main__":
-    # Test d'extraction des données pour le défi 1
-    defi = Defi(1)
-    print("=" * 45)
-    print(f"Extraction du {defi}")
-    print("Pièces libres restantes à placer :", defi.pieces_libres)
-    print("Première case vide :", defi.plateau.premiere_case_vide())
-    print("\nPlateau avec pièces fixes posées :")
-    defi.plateau.afficher()
-    print("Solution attendue :")
-    for ligne in defi.solution:
-        print(" ", ligne)
-    print("=" * 45)
-from defis import Defi
-
-defi = Defi(1)
-print("Pièces libres :", defi.pieces_libres)
-defi.plateau.afficher()
-exit()

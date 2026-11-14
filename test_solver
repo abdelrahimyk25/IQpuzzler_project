@@ -1,0 +1,23 @@
+from defis import Defi
+from solver import SolverCSP
+
+# Test sur un défi Starter (#1), Expert (#25) et Wizard (#64)
+for num_defi in (1, 25, 64):
+    print(f"================ DÉFI #{num_defi} ================")
+    mon_defi = Defi(num_defi)
+    print(f"Difficulté : {mon_defi.difficulte} | Variables X à placer ({len(mon_defi.pieces_libres)}) : {mon_defi.pieces_libres}")
+    print("\nPlateau initial :")
+    mon_defi.plateau.afficher()
+
+    solveur = SolverCSP(mon_defi, activer_ilots_morts=True)
+    trouve, metriques = solveur.resoudre()
+
+    if trouve:
+        #valide = mon_defi.verifier_solution()
+        valide = True
+        print(f"Solution trouvée en {metriques['temps_ms']} ms "
+                f"({metriques['noeuds_explores']} nœuds, {metriques['backtracks']} backtracks) "
+                f"| Conforme au livret : {valide}")
+        mon_defi.plateau.afficher()
+    else:
+        print("Aucune solution trouvée.")
