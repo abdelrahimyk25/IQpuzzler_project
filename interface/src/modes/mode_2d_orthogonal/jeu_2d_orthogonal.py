@@ -11,7 +11,7 @@ BLEU = (50, 150, 250)
 ROUGE = (255, 0, 0)
 
 
-def afficher_plateau_2d_orthogonal(fenetre):
+def afficher_plateau_2d_orthogonal(fenetre, liste_plateau):
     horloge = pygame.time.Clock()
 
     # Polices
@@ -22,8 +22,87 @@ def afficher_plateau_2d_orthogonal(fenetre):
     # image plateau
     plateau = Image(0, 0, 594, 281, "IQpuzzler_project/interface/src/assets/plateau_2d_orthogonal.png")
 
+    #coordonnées:
 
-    # 2. Création et ancrage de la boule directement sur la surface du plateau
+    x = {
+        0 : 40,
+        1 : 93,
+        2 : 145,
+        3 : 197,
+        4 : 249,
+        5 : 301,
+        6 : 354,
+        7 : 406,
+        8 : 458,
+        9 : 510,
+        10 : 563     
+    }
+
+    y = {
+        0 : 34,
+        1 : 87,
+        2 : 140,
+        3 : 192,
+        4 : 245     
+    }
+
+    """
+    x0 = 40
+    x1 = 93
+    x2 = 145
+    x3 = 197
+    x4 = 249
+    x5 = 301
+    x6 = 354
+    x7 = 406
+    x8 = 458
+    x9 = 510
+    x10 = 563
+
+    y0 = 34
+    y1 = 87
+    y2 = 140
+    y3 = 192
+    y4 = 245
+    """
+
+    #couleurs:
+
+    couleurs = {
+        "A" : (252,222,23),
+        "B" : (240,144,11),
+        "C" : (225,10,25),
+        "D" : (181,30,33),
+        "E" : (234,112,166),
+        "F" : (129,33,128),
+        "G" : (23,94,169),
+        "H" : (25,157,218),
+        "I" : (163,215,240),
+        "K" : (18,142,94),
+        "L" : (151,191,34)
+    }
+
+    #Boules:
+
+    boules = {}
+
+    """
+    A = (252,222,23)
+    B = (240,144,11)
+    C = (225,10,25)
+    D = (181,30,33)
+    E = (234,112,166)
+    F = (129,33,128)
+    G = (23,94,169)
+    H = (25,157,218)
+    I = (163,215,240)
+    K = (18,142,94)
+    L = (151,191,34)
+    """
+
+
+    """
+    #Création et ancrage de la boule directement sur la surface du plateau
 
     #LIGNE 1:----------------------------------------------
     boule1 = Boule(40, 34, BLEU)
@@ -194,6 +273,21 @@ def afficher_plateau_2d_orthogonal(fenetre):
 
     boule55 = Boule(563, 245, BLEU)
     boule55.dessiner(plateau.image_base)
+
+    """
+
+    for ligne in range(5):          
+        for colonne in range(11):   
+            lettre = liste_plateau[ligne][colonne]
+            if lettre is not None:  
+                coord_x = x[colonne]
+                coord_y = y[ligne]
+                couleur = couleurs[lettre]
+                boules[(ligne, colonne)] = Boule(coord_x, coord_y, couleur)
+
+    for boule in boules.values():
+        boule.dessiner(plateau.image_base)
+
 
     en_cours = True
     while en_cours:

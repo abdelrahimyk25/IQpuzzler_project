@@ -32,6 +32,16 @@ LARGEUR, HAUTEUR = 800, 600
 fenetre = pygame.display.set_mode((LARGEUR, HAUTEUR), pygame.RESIZABLE)
 pygame.display.set_caption("IQ PUZZLER PRO XXL")
 
+liste_plateau = [
+
+["D", "D", "E", "E", "E", "G", "G", "L", "L", None, None],
+["K", "D", "D", "C", "E", "E", "G", "L", None, None, None],
+["K", "K", "F", "C", None, None, "G", "L", "L",  None, None],
+["K", "F", "F", "C", None,None,None,None,None,None,None],
+["F", "F", "C", "C", None,None,None,None,None,None,None]
+
+]
+
 # 2. État initial au lancement
 etat_actuel = "menu"
 
@@ -144,7 +154,7 @@ while etat_actuel != "quitter":
   elif etat_actuel == "jeu_2d_orthogonal":
                     # On passe le contrôle à la sélection du mode
                     print("afichage plateau")
-                    etat_actuel = afficher_plateau_2d_orthogonal(fenetre)
+                    etat_actuel = afficher_plateau_2d_orthogonal(fenetre, liste_plateau)
 
   elif etat_actuel == "jeu":
     # Exemple pour plus tard : etat_actuel = lancer_jeu(fenetre)
