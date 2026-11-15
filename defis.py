@@ -15,6 +15,10 @@ from pieces import PIECES
 from plateau import Plateau
 from PlateauLosange import PlateauLosange
 
+# Si Plateau n'avait pas encore get_ilots_vides, on lui partage celle définie dans PlateauLosange
+if not hasattr(Plateau, "get_ilots_vides"):
+    Plateau.get_ilots_vides = PlateauLosange.get_ilots_vides
+
 FICHIER_DEFIS = Path(__file__).parent / "defis.json"
 
 
@@ -51,7 +55,7 @@ class Defi:
         self.pieces_fixes = donnees.get("pieces_initiales", [])
         self.solution = donnees.get("solution_grille", [])
 
-        # 2. Instanciation directe et propre du plateau selon le mode
+        # 2. Instanciation directe du bon plateau selon le mode
         self.plateau = PlateauLosange() if self.mode == "losange" else Plateau()
         ids_fixes = set()
 
