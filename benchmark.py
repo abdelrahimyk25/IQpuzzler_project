@@ -3,58 +3,33 @@ benchmark.py - Banc d'essai et statistiques de performance du solveur (IQ Puzzle
 Rôle : Membre 3 (Banque de défis, Tests & Benchmark).
 
 Fonctionnalités :
-- Exécute les défis du mode RECTANGLE (1 à 64).
-- Trie par difficulté : Starter, Junior, Expert, Master, Wizard.
+- Exécute et évalue le solveur sur les modes RECTANGLE (1-64) ou LOSANGE (65-128).
+- Trie par niveau de difficulté : Starter, Junior, Expert, Master, Wizard.
 - Calcule et affiche les moyennes (temps de calcul, nœuds explorés, taux de succès).
 """
 
 from __future__ import annotations
-import builtins
+import argparse
 import json
 import time
 from pathlib import Path
 
-# Neutralisation de l'éventuel exit() lors de l'import de defis.py
-_vrai_exit = builtins.exit
-builtins.exit = lambda *a: None
-try:
-    import defis
-    from pieces import PIECES
-    from plateau import Plateau
-    from solver import SolverCSP
-finally:
-    builtins.exit = _vrai_exit
+from defis import Defi
+from solver import SolverCSP
 
 FICHIER_DEFIS = Path(__file__).parent / "defis.json"
 DIFFICULTES = ["Starter", "Junior", "Expert", "Master", "Wizard"]
 
 
-def preparer_defi(id_defi: int):
-    """Charge le défi et initialise le plateau officiel pour le solveur."""
-    defi = defis.Defi(id_defi)
-    defi.id_defi = int(defi.id)
-    plateau = Plateau()
-    poses = set()
-
-    for p in defi.pieces_fixes:
-        forme = [tuple(c) for c in p["forme"]]
-        plateau.poser_piece(p["id"], forme, p["x"], p["y"], verrouillee=True)
-        poses.add(p["id"])
-
-    defi.plateau = plateau
-    defi.pieces_libres = sorted(set(PIECES.keys()) - poses)
-    return defi
-
-
-def executer_benchmark():
-    """Lance le solveur sur tous les défis Rectangle et calcule les moyennes par difficulté."""
+def executer_benchmark(mode_cible: str = "losange"):
+    """Lance le solveur sur tous les défis du mode choisi et calcule les moyennes par difficulté."""
     with open(FICHIER_DEFIS, "r", encoding="utf-8") as f:
         tous_defis = json.load(f)
 
-    # 1. Regroupement des défis Rectangle par difficulté
+    # 1. Regroupement des défis du mode par difficulté
     groupes = {d: [] for d in DIFFICULTES}
     for did, data in tous_defis.items():
-        if data.get("mode") == "rectangle":
+        if data.get("mode") == mode_cible:
             diff = data.get("difficulte", "Starter").capitalize()
             if diff in groupes:
                 groupes[diff].append(int(did))
@@ -62,7 +37,7 @@ def executer_benchmark():
     stats_diff = {}
 
     print("=" * 68)
-    print("   BANC D'ESSAI AUTOMATISÉ - MODE RECTANGLE (IQ-PUZZLER PRO)")
+    print(f"   BANC D'ESSAI AUTOMATISÉ - MODE {mode_cible.upper()} (IQ-PUZZLER PRO)")
     print("=" * 68)
 
     # 2. Exécution niveau par niveau
@@ -80,7 +55,8 @@ def executer_benchmark():
 
         for did in ids:
             try:
-                defi = preparer_defi(did)
+                # Defi instancie directement le bon plateau (Plateau ou PlateauLosange)
+                defi = Defi(did)
                 t0 = time.perf_counter()
                 solver = SolverCSP(defi)
                 ok, metriques = solver.resoudre()
@@ -97,7 +73,7 @@ def executer_benchmark():
             else:
                 symbole = "❌ ÉCHEC "
 
-            print(f"  Défi #{did:03d} | {symbole} | Temps: {t_ms:6.2f} ms | Nœuds: {noeuds:5d}")
+            print(f"  Défi #{did:03d} | {symbole} | Temps: {t_ms:7.2f} ms | Nœuds: {noeuds:6d}")
 
         # Calcul des moyennes pour la difficulté
         nb_ok = len(temps_liste)
@@ -111,7 +87,7 @@ def executer_benchmark():
 
     # 3. Tableau de synthèse final
     print("\n" + "=" * 68)
-    print("           SYNTHÈSE DES MOYENNES PAR DIFFICULTÉ")
+    print(f"       SYNTHÈSE DES MOYENNES PAR DIFFICULTÉ ({mode_cible.upper()})")
     print("=" * 68)
     print(f"{'Difficulté':<12} | {'Succès':<10} | {'Taux':<8} | {'Temps moyen':<13} | {'Nœuds moy.'}")
     print("-" * 68)
@@ -119,10 +95,14 @@ def executer_benchmark():
     for diff, s in stats_diff.items():
         print(
             f"{diff:<12} | {s['succes']:>2d}/{s['total']:<2d}      | "
-            f"{s['taux']:>5.1f} % | {s['tps_moyen']:>8.2f} ms    | {s['noeuds_moyen']:>8.1f}"
+            f"{s['taux']:>5.1f} % | {s['tps_moyen']:>8.2f} ms    | {s['noeuds_moyen']:>9.1f}"
         )
     print("=" * 68)
 
 
 if __name__ == "__main__":
-    executer_benchmark()
+    parser = argparse.ArgumentParser(description="Benchmark IQ-Puzzler Pro")
+    parser.add_argument("--mode", choices=["rectangle", "losange"], default="losange", help="Mode de jeu à tester")
+    args = parser.parse_args()
+
+    executer_benchmark(mode_cible=args.mode)
