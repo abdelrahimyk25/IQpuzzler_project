@@ -1,11 +1,14 @@
 
-"""
+
 from PIL import Image
 
-img = Image.open("IQpuzzler_project/interface/src/assets/129.png")
+img = Image.open("IQpuzzler_project/interface/src/assets/plateau_2d_orthogonal.png")
 print(img.size)
-"""
 
+
+
+
+"""
 from PIL import Image, ImageDraw
 
 
@@ -42,3 +45,5 @@ arrondir_angles(
     chemin_sortie="image_arrondie.png",
     rayon=200,  # Rayon de courbure en pixels
 )
+"""
+

@@ -74,7 +74,7 @@ def afficher_grilles_starter_2d_orthogonal(fenetre):
             bouton.verifier_survol(pos_souris)
             if bouton.a_ete_clique(pos_souris, clic_souris):
                 print(f"Lancement de la grille {bouton.texte}")
-                return "starter_orthogonal"
+                return "jeu_2d_orthogonal"
 
         # 5. Affichage dynamique
         fenetre.fill(BLANC)

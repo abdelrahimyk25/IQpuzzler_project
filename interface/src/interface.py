@@ -24,6 +24,8 @@ from modes.mode_2d_diagonal.grilles.expert_diagonal import afficher_grilles_expe
 from modes.mode_2d_diagonal.grilles.master_diagonal import afficher_grilles_master_2d_diagonal
 from modes.mode_2d_diagonal.grilles.wizard_diagonal import afficher_grilles_wizard_2d_diagonal
 
+from modes.mode_2d_orthogonal.jeu_2d_orthogonal import afficher_plateau_2d_orthogonal
+
 # 1. Initialisation globale
 pygame.init()
 LARGEUR, HAUTEUR = 800, 600
@@ -138,6 +140,11 @@ while etat_actuel != "quitter":
                   # On passe le contrôle à la sélection du mode
                   print("wizard_pyramidal")
                   etat_actuel = afficher_grilles_wizard_3d_pyramidal(fenetre)
+
+  elif etat_actuel == "jeu_2d_orthogonal":
+                    # On passe le contrôle à la sélection du mode
+                    print("afichage plateau")
+                    etat_actuel = afficher_plateau_2d_orthogonal(fenetre)
 
   elif etat_actuel == "jeu":
     # Exemple pour plus tard : etat_actuel = lancer_jeu(fenetre)

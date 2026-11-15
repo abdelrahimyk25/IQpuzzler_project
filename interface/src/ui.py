@@ -75,3 +75,25 @@ class Bouton_image:
 
   def a_ete_clique(self, pos_souris, clic_souris):
     return self.est_survole and clic_souris[0]
+
+
+class Image:
+    def __init__(self, x, y, largeur, hauteur, chemin_img_base):
+        self.rect = pygame.Rect(x, y, largeur, hauteur)
+
+        img_base = pygame.image.load(chemin_img_base).convert_alpha()
+        self.image_base = pygame.transform.scale(img_base, (largeur, hauteur))
+
+    def dessiner(self, surface):
+        surface.blit(self.image_base, self.rect)
+
+
+class Boule:
+  def __init__(self, x, y, couleur, rayon=25):
+      self.x = x
+      self.y = y
+      self.couleur = couleur
+      self.rayon = rayon
+
+  def dessiner(self, surface):
+      pygame.draw.circle(surface, self.couleur, (self.x, self.y), self.rayon)
