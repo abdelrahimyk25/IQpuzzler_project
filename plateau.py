@@ -1,18 +1,27 @@
-from pieces import PIECES
+
 # definir les dims (5x11)
 HAUTEUR = 5 #0...4
 LARGEUR = 11 #0....10
-
+INTERDIT = "#"
 class Plateau :
     #Un grid[y][x] : 
-    def __init__(self):
-        self.grille = [[None] * LARGEUR for _ in range (HAUTEUR)]
+    def __init__(self, largeur= LARGEUR, hauteur = HAUTEUR, cases_interdites =()):
+
+        self.largeur = largeur
+        self.hauteur = hauteur
+       
+        self.grille = [[None] * self.largeur for _ in range (self.hauteur)]
         #Listes des pieces placees et verrouillees
         self.pieces_placees = {} 
         self.pieces_verrouillees = set() # set pour pas permettre de bougé les pieces intialisé au debut
+        #mettre des case inutilisable pour la losange
+        self.cases_interdites = set(cases_interdites)
+        for x,y in self.cases_interdites:
+            assert self.dans_plateau(x,y), f"case interdite hors grille : {(x,y)}"
+            self.grille[y][x]= INTERDIT
 
     def dans_plateau(self, x, y): # une fonction pour checker si une piece est dans le plateau ou pas
-        return 0 <= x < LARGEUR and 0 <= y < HAUTEUR
+        return 0 <= x < self.largeur and 0 <= y < self.hauteur
 
     # Fonction pour verifier si une pieces peut etre placé ou pas
     # forme ici est une orientation normalisée
@@ -61,8 +70,8 @@ class Plateau :
 
     def premiere_case_vide(self) -> tuple[int,int]:
         # on parcours col par col et de ligne haut a ligne bas jusqu'a quand on trouve la case
-        for x in range(LARGEUR):
-            for y in range(HAUTEUR):
+        for x in range(self.largeur):
+            for y in range(self.hauteur):
                 if self._est_vide(x,y):
                     return(x,y)
         return None
@@ -76,7 +85,10 @@ class Plateau :
         return self.grille[y][x] in (None, '.')
     # constructeur pour copier un plateau
     def copier(self) -> "Plateau":
-        p = Plateau()
+        p = type(self)()
+        p.hauteur = self.hauteur
+        p.largeur = self.largeur
+        p.cases_interdites = set(self.cases_interdites)
         p.grille = [ligne[:] for ligne in self.grille]
         p.pieces_placees = {i : j[:] for i,j in self.pieces_placees.items()}
         p.pieces_verrouillees = set(self.pieces_verrouillees)
