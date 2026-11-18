@@ -1,4 +1,4 @@
-from plateau import Plateau
+from .plateau import Plateau
 from collections import deque
 CASES_INTERDITES = [
     # y = 0 : "####....#"
