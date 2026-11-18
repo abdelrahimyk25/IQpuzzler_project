@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Any
 from Game_Element.plateau import Plateau
 from Game_Element.pieces import PIECES
-from Game_Element.plateauLosange import PlateauLosange
+from Game_Element.PlateauLosange import PlateauLosange
 from Game_Element.plateauRectangle import PlateauRectangle
 
 FICHIER_DEFIS = Path(__file__).parent / "defis.json"
