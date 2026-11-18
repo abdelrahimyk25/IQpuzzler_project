@@ -9,4 +9,4 @@ class PlateauRectangle(Plateau):
     LARGEUR = LARGEUR
 
     def __init__(self):
-        super().__init__(self.LARGEUR, self.HAUTEUR)
+        super().__init__(largeur=self.LARGEUR, hauteur=self.HAUTEUR)
