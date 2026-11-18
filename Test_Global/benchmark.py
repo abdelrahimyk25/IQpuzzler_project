@@ -5,27 +5,27 @@ Rôle : Membre 3 (Banque de défis, Tests & Benchmark).
 Fonctionnalités :
 - Exécute et évalue le solveur sur les modes RECTANGLE (1-64) ou LOSANGE (65-128).
 - Trie par niveau de difficulté : Starter, Junior, Expert, Master, Wizard.
+- Détecte et remonte les échecs et anomalies (défis impossibles ou invalides).
 - Calcule et affiche les moyennes (temps de calcul, nœuds explorés, taux de succès).
 """
 
-import sys
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-
 from __future__ import annotations
+
 import argparse
 import json
+import sys
 import time
 from pathlib import Path
 
-try:
-    from CSP.solver import resoudre_csp
-except ImportError:
-    try:
-        from main import resoudre_csp
-    except ImportError:
-        resoudre_csp = None
+# Ajout de la racine du projet au sys.path pour les imports des modules frères
+RACINE_PROJET = Path(__file__).resolve().parent.parent
+if str(RACINE_PROJET) not in sys.path:
+    sys.path.insert(0, str(RACINE_PROJET))
 
-FICHIER_DEFIS = Path(__file__).parent / "defis.json"
+from CSP.defis import Defi
+from CSP.solver import SolverCSP
+
+FICHIER_DEFIS = RACINE_PROJET / "CSP" / "defis.json"
 DIFFICULTES = ["Starter", "Junior", "Expert", "Master", "Wizard"]
 
 
@@ -70,7 +70,7 @@ def executer_benchmark(mode_cible: str = "losange"):
                 ok, metriques = solver.resoudre()
                 t_ms = (time.perf_counter() - t0) * 1000.0
                 noeuds = metriques.get("noeuds_explores", 0)
-            except Exception:
+            except Exception as e:
                 ok, t_ms, noeuds = False, 0.0, 0
 
             if ok:
