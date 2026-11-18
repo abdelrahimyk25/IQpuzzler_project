@@ -4,7 +4,6 @@ from collections import deque
 from typing import Any
 
 from Game_Element.pieces import PIECES, CATALOGUE
-from Game_Element.plateau import Plateau, HAUTEUR, LARGEUR
 from CSP.defis import Defi
 
 def critere_tri_piece(lettre: str) -> tuple[int, int]:
