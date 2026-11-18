@@ -1,3 +1,4 @@
+from .pieces import CATALOGUE
 
 # definir les dims (5x11)
 HAUTEUR = 5 #0...4
@@ -75,6 +76,41 @@ class Plateau :
                 if self._est_vide(x,y):
                     return(x,y)
         return None
+
+    def case_la_plus_contrainte(self) -> tuple[int, int]:
+        """
+        Retourne la case vide avec le moins de voisins vides adjacents (MRV géométrique).
+        Ultra-rapide à calculer et cible naturellement les goulots d'étranglement.
+        """
+        case_min = None
+        min_voisins = float('inf')
+
+        for x in range(self.largeur):
+            for y in range(self.hauteur):
+                if self._est_vide(x, y):
+                    voisins_vides = 0
+                    
+                    # Vérification des 4 directions : Haut, Bas, Gauche, Droite
+                    for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                        nx, ny = x + dx, y + dy
+                        # Vérifie si le voisin est dans les limites du plateau et s'il est vide
+                        if 0 <= nx < self.largeur and 0 <= ny < self.hauteur:
+                            if self._est_vide(nx, ny):
+                                voisins_vides += 1
+                    
+                    # Coupure instantanée : si une case a 0 voisin libre, c'est un trou isolé d'une case.
+                    # On la retourne immédiatement pour que le solveur back-track tout de suite.
+                    if voisins_vides == 0:
+                        return (x, y)
+
+                    if voisins_vides < min_voisins:
+                        min_voisins = voisins_vides
+                        case_min = (x, y)
+
+        return case_min
+
+
+
 
     # fonction pour la fin de jeu quand le plateau est complet
     def est_complet(self) -> bool: 

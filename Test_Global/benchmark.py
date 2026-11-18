@@ -17,6 +17,9 @@ import sys
 import time
 from pathlib import Path
 
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
+
 # Ajout de la racine du projet au sys.path pour les imports des modules frères
 RACINE_PROJET = Path(__file__).resolve().parent.parent
 if str(RACINE_PROJET) not in sys.path:
