@@ -8,14 +8,22 @@ Fonctionnalités :
 - Calcule et affiche les moyennes (temps de calcul, nœuds explorés, taux de succès).
 """
 
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 from __future__ import annotations
 import argparse
 import json
 import time
 from pathlib import Path
 
-from defis import Defi
-from solver import SolverCSP
+try:
+    from CSP.solver import resoudre_csp
+except ImportError:
+    try:
+        from main import resoudre_csp
+    except ImportError:
+        resoudre_csp = None
 
 FICHIER_DEFIS = Path(__file__).parent / "defis.json"
 DIFFICULTES = ["Starter", "Junior", "Expert", "Master", "Wizard"]

@@ -10,10 +10,9 @@ from __future__ import annotations
 import json
 from pathlib import Path
 from typing import Any
-
-from pieces import PIECES
-from plateau import Plateau
-from PlateauLosange import PlateauLosange
+from Game_Element.plateau import Plateau
+from Game_Element.pieces import PIECES
+from Game_Element.PlateauLosange import PlateauLosange
 
 # Si Plateau n'avait pas encore get_ilots_vides, on lui partage celle définie dans PlateauLosange
 if not hasattr(Plateau, "get_ilots_vides"):
