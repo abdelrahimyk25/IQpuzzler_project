@@ -3,11 +3,8 @@ import time
 from collections import deque
 from typing import Any
 
-from Game_Element.pieces import PIECES, generate_catalogue_orient
-from Game_Element.plateau import Plateau, HAUTEUR, LARGEUR
+from Game_Element.pieces import PIECES, CATALOGUE
 from CSP.defis import Defi
-
-CATALOGUE = generate_catalogue_orient()
 
 def critere_tri_piece(lettre: str) -> tuple[int, int]:
             taille_piece = PIECES[lettre]["coords"]
@@ -110,7 +107,8 @@ class SolverCSP:
         """
         Boucle récursive de l'algorithme Test & Generate (Backtracking).
         """
-        cible = self.plateau.premiere_case_vide()
+        cible = self.plateau.case_la_plus_contrainte()
+        self.noeuds_explores += 1
         
         # Condition d'arrêt : toutes les cases sont remplies (instanciation complète consistante)
         if cible is None:
@@ -130,7 +128,6 @@ class SolverCSP:
                 # de la pièce doit se superposer à (xc, yc) -> ancrage en (xc - dx, yc - dy)
                 for dx, dy in orientation:
                     x0, y0 = xc - dx, yc - dy
-                    self.noeuds_explores += 1
 
                     # Test de consistance (Contraintes C : unaire et binaire)
                     if self.plateau.peut_placer(orientation, x0, y0):

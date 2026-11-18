@@ -153,3 +153,5 @@ def generate_catalogue_orient():
         catalogue[id_piece] = generate_orientations(piece["coords"])
 
     return catalogue
+
+CATALOGUE = generate_catalogue_orient()
