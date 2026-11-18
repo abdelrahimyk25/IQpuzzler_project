@@ -12,11 +12,8 @@ from pathlib import Path
 from typing import Any
 from Game_Element.plateau import Plateau
 from Game_Element.pieces import PIECES
-from Game_Element.PlateauLosange import PlateauLosange
-
-# Si Plateau n'avait pas encore get_ilots_vides, on lui partage celle définie dans PlateauLosange
-if not hasattr(Plateau, "get_ilots_vides"):
-    Plateau.get_ilots_vides = PlateauLosange.get_ilots_vides
+from Game_Element.plateauLosange import PlateauLosange
+from Game_Element.plateauRectangle import PlateauRectangle
 
 FICHIER_DEFIS = Path(__file__).parent / "defis.json"
 
@@ -55,7 +52,12 @@ class Defi:
         self.solution = donnees.get("solution_grille", [])
 
         # 2. Instanciation directe du bon plateau selon le mode
-        self.plateau = PlateauLosange() if self.mode == "losange" else Plateau()
+        if self.mode == "losange":
+            self.plateau = PlateauLosange()
+        elif self.mode == "rectangle":
+            self.plateau = PlateauRectangle()
+        # else: mettre le plateau pyramide ici
+        
         ids_fixes = set()
 
         for p in self.pieces_fixes:
