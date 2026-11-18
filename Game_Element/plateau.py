@@ -2,12 +2,10 @@ from abc import ABC, abstractmethod
 from collections import deque
 from .pieces import CATALOGUE
 
-INTERDIT = "#"
-
 class Plateau(ABC):
     # Un grid[y][x] : 
     @abstractmethod
-    def __init__(self, largeur, hauteur, cases_interdites=()):
+    def __init__(self, largeur, hauteur):
         self.largeur = largeur
         self.hauteur = hauteur
        
@@ -15,14 +13,9 @@ class Plateau(ABC):
         # Listes des pieces placees et verrouillees
         self.pieces_placees = {} 
         self.pieces_verrouillees = set() # set pour pas permettre de bougé les pieces intialisé au debut
-        # mettre des case inutilisable pour la losange
-        self.cases_interdites = set(cases_interdites)
-        for x, y in self.cases_interdites:
-            assert 0 <= x < self.largeur and 0 <= y < self.hauteur, f"case interdite hors grille : {(x,y)}"
-            self.grille[y][x] = INTERDIT
 
     def dans_plateau(self, x, y): # une fonction pour checker si une piece est dans le plateau ou pas
-        return 0 <= x < self.largeur and 0 <= y < self.hauteur and (x, y) not in self.cases_interdites
+        return 0 <= x < self.largeur and 0 <= y < self.hauteur
 
     # Fonction pour verifier si une pieces peut etre placé ou pas
     # forme ici est une orientation normalisée
@@ -92,9 +85,8 @@ class Plateau(ABC):
                     for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
                         nx, ny = x + dx, y + dy
                         # Vérifie si le voisin est dans les limites du plateau et s'il est vide
-                        if self.dans_plateau(nx, ny):
-                            if self._est_vide(nx, ny):
-                                voisins_vides += 1
+                        if self.dans_plateau(nx, ny) and self._est_vide(nx, ny):
+                            voisins_vides += 1
                     
                     # Coupure instantanée : si une case a 0 voisin libre, c'est un trou isolé d'une case.
                     # On la retourne immédiatement pour que le solveur back-track tout de suite.
@@ -133,14 +125,13 @@ class Plateau(ABC):
 
     # fonction pour verifier si le plateau est vide ou pas 
     def _est_vide(self, x, y): 
-        return self.grille[y][x] in (None, '.')
+        return self.grille[y][x] is None
 
     # constructeur pour copier un plateau
     def copier(self) -> "Plateau":
         p = type(self)()
         p.hauteur = self.hauteur
         p.largeur = self.largeur
-        p.cases_interdites = set(self.cases_interdites)
         p.grille = [ligne[:] for ligne in self.grille]
         p.pieces_placees = {i: j[:] for i, j in self.pieces_placees.items()}
         p.pieces_verrouillees = set(self.pieces_verrouillees)
