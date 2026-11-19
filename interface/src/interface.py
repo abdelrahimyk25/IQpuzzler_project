@@ -25,6 +25,7 @@ from modes.mode_2d_diagonal.grilles.master_diagonal import afficher_grilles_mast
 from modes.mode_2d_diagonal.grilles.wizard_diagonal import afficher_grilles_wizard_2d_diagonal
 
 from modes.mode_2d_orthogonal.jeu_2d_orthogonal import afficher_plateau_2d_orthogonal
+from modes.mode_2d_diagonal.jeu_2d_diagonal import afficher_plateau_2d_diagonal
 
 # 1. Initialisation globale
 pygame.init()
@@ -32,7 +33,7 @@ LARGEUR, HAUTEUR = 800, 600
 fenetre = pygame.display.set_mode((LARGEUR, HAUTEUR), pygame.RESIZABLE)
 pygame.display.set_caption("IQ PUZZLER PRO XXL")
 
-liste_plateau = [
+liste_plateau_orth = [
 
 ["D", "D", "E", "E", "E", "G", "G", "L", "L", None, None],
 ["K", "D", "D", "C", "E", "E", "G", "L", None, None, None],
@@ -40,6 +41,18 @@ liste_plateau = [
 ["K", "F", "F", "C", None,None,None,None,None,None,None],
 ["F", "F", "C", "C", None,None,None,None,None,None,None]
 
+]
+
+liste_plateau_diag = [
+    ["#", "#", "#", "#", "A", "A", "A", "A", "#"],
+    ["#", "#", "#", "#", "E", "E", "A", "J", "J"],
+    ["#", "#", "E", "E", "E", "C", "J", "J", "J"],
+    ["#", "#", "D", "D", "K", "C", "C", "C", "C"],
+    ["I", "D", "D", "K", "K", "K", "H", "H", "H"],
+    ["I", "I", "B", "G", "G", "G", "H", "#", "#"],
+    ["F", "B", "B", "L", "L", "G", "H", "#", "#"],
+    ["F", "F", "B", "B", "L", "#", "#", "#", "#"],
+    ["#", "F", "F", "L", "L", "#", "#", "#", "#"],
 ]
 
 # 2. État initial au lancement
@@ -56,6 +69,7 @@ while etat_actuel != "quitter":
   if etat_actuel == "menu":
     # On passe le contrôle au menu principal
     etat_actuel = afficher_menu_principal(fenetre)
+    #etat_actuel = afficher_plateau_2d_diagonal(fenetre, liste_plateau_diag)##------------------a modifier
 
   elif etat_actuel == "selection_mode":
     # On passe le contrôle à la sélection du mode
@@ -154,7 +168,12 @@ while etat_actuel != "quitter":
   elif etat_actuel == "jeu_2d_orthogonal":
                     # On passe le contrôle à la sélection du mode
                     print("afichage plateau")
-                    etat_actuel = afficher_plateau_2d_orthogonal(fenetre, liste_plateau)
+                    etat_actuel = afficher_plateau_2d_orthogonal(fenetre, liste_plateau_orth)
+
+  elif etat_actuel == "jeu_2d_diagonal":
+                      # On passe le contrôle à la sélection du mode
+                      print("afichage plateau")
+                      etat_actuel = afficher_plateau_2d_diagonal(fenetre, liste_plateau_diag)
 
   elif etat_actuel == "jeu":
     # Exemple pour plus tard : etat_actuel = lancer_jeu(fenetre)

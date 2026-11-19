@@ -78,6 +78,7 @@ def afficher_plateau_2d_orthogonal(fenetre, liste_plateau):
         "G" : (23,94,169),
         "H" : (25,157,218),
         "I" : (163,215,240),
+        "J" : (140,201,190),
         "K" : (18,142,94),
         "L" : (151,191,34)
     }
