@@ -14,6 +14,7 @@ from Game_Element.plateau import Plateau
 from Game_Element.pieces import PIECES
 from Game_Element.PlateauLosange import PlateauLosange
 from Game_Element.plateauRectangle import PlateauRectangle
+from Game_Element.PlateauPyramid import PlateauPyramid
 
 FICHIER_DEFIS = Path(__file__).parent / "defis.json"
 
@@ -50,22 +51,29 @@ class Defi:
         self.difficulte = donnees.get("difficulte", "Inconnue")
         self.pieces_fixes = donnees.get("pieces_initiales", [])
         self.solution = donnees.get("solution_grille", [])
-
-        # 2. Instanciation directe du bon plateau selon le mode
-        if self.mode == "losange":
-            self.plateau = PlateauLosange()
-        elif self.mode == "rectangle":
-            self.plateau = PlateauRectangle()
-        # else: mettre le plateau pyramide ici
-        
         ids_fixes = set()
 
-        for p in self.pieces_fixes:
-            pid = p["id"]
-            x0, y0 = p["x"], p["y"]
-            forme = [tuple(coord) for coord in p["forme"]]
-            self.plateau.poser_piece(pid, forme, x0, y0, verrouillee=True)
-            ids_fixes.add(pid)
+        # 2. Instanciation directe du bon plateau selon le mode
+        if self.mode == "pyramide":
+            self.plateau = PlateauPyramid()
+            for p in self.pieces_fixes:
+                pid = p["id"]
+                coords = [tuple(c) for c in p["positions"]]
+                self.plateau.poser_cases(pid, coords, verrouillee=True)
+                ids_fixes.add(pid)
+        else:
+            if self.mode == "losange":
+                self.plateau = PlateauLosange()
+            else:
+                self.plateau = PlateauRectangle()
+
+            for p in self.pieces_fixes:
+                pid = p["id"]
+                x0, y0 = p["x"], p["y"]
+                forme = [tuple(coord) for coord in p["forme"]]
+                self.plateau.poser_piece(pid, forme, x0, y0, verrouillee=True)
+                ids_fixes.add(pid)
+        
 
         # 3. Détermination des pièces libres restantes
         self.pieces_libres = sorted(set(PIECES.keys()) - ids_fixes)

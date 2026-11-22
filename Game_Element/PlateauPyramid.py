@@ -1,130 +1,130 @@
-from collections import deque
+from .plateau import Plateau
+from .orientation3D import CATALOGUE_3D  # À adapter selon le nom dans orientation3D.py
+
+# Les 12 directions voisines dans un empilement pyramidal compact :
+# 4 sur le même étage, 4 sur l'étage au-dessus (z+1), 4 sur l'étage en dessous (z-1)
+DIRECTIONS_3D = (
+    (1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0),
+    (0, 0, 1), (-1, 0, 1), (0, -1, 1), (-1, -1, 1),
+    (0, 0, -1), (1, 0, -1), (0, 1, -1), (1, 1, -1),
+)
 
 
+class PlateauPyramid(Plateau):
+    HAUTEUR = 5  # Étages z = 0 (5x5), 1 (4x4), 2 (3x3), 3 (2x2), 4 (1x1)
 
-class PlateauPyramid:
-    BASE = 5
+    def __init__(self):
+        super().__init__()
+        # grille[z][y][x] : chaque étage z est une matrice carrée (5 - z) x (5 - z)
+        self.grille = []
+        for z in range(self.HAUTEUR):
+            taille = self.HAUTEUR - z
+            etage = [[None] * taille for _ in range(taille)]
+            self.grille.append(etage)
 
-
-
-    def __init__(self,base = BASE):
-        if not isinstance(base, int) or base <= 0:
-            raise ValueError('la base doit etre une entier positif')
-        self.base = base
-        self.grille = [[[None for _ in range(base-z)]for _ in range(base-z)] for z in range(base)]
-        self.pieces_placees = {}
-        self.pieces_verrouillees = set()
-
-
-
-    def dans_plateau(self,x,y,z):
-        return (0 <= z < self.base and 0 <= x < self.base-z and 0 <= y < self.base-z)
-
-    def _est_vide(self, x,y,z):
-        return self.dans_plateau(x,y,z) and self.grille[z][y][x] is None
-
-
-
-    def peut_placer(self, forme, x0,y0,z0):
-        return bool(forme) and all(self._est_vide(x0+dx, y0+dy, z0 + dz) for dx,dy,dz in forme)
-
-
-
-
-    def poser_piece(self, id_piece, forme, x0,y0,z0, verrouillee = False):
-        if id_piece in self.pieces_placees or not self.peut_placer(forme, x0, y0, z0):
+    def dans_plateau(self, x: int, y: int, z: int) -> bool:
+        if z < 0 or z >= self.HAUTEUR:
             return False
+        taille = self.HAUTEUR - z
+        return 0 <= x < taille and 0 <= y < taille
 
-        coords = [(x0+dx, y0+dy,z0+dz) for dx, dy, dz in forme]
-        for x,y,z in coords:
+    # --- Implémentation du contrat générique Plateau ---
+
+    def est_vide(self, case: tuple[int, int, int]) -> bool:
+        x, y, z = case
+        return self.grille[z][y][x] is None
+
+    def lister_cases_vides(self) -> list[tuple[int, int, int]]:
+        cases_vides = []
+        for z in range(self.HAUTEUR):
+            taille = self.HAUTEUR - z
+            for y in range(taille):
+                for x in range(taille):
+                    if self.grille[z][y][x] is None:
+                        cases_vides.append((x, y, z))
+        return cases_vides
+
+    def obtenir_voisins(self, case: tuple[int, int, int]) -> list[tuple[int, int, int]]:
+        x, y, z = case
+        voisins = []
+        for dx, dy, dz in DIRECTIONS_3D:
+            nx = x + dx
+            ny = y + dy
+            nz = z + dz
+            if self.dans_plateau(nx, ny, nz):
+                voisins.append((nx, ny, nz))
+        return voisins
+
+    def degre_max(self) -> int:
+        return 12
+
+    def nb_orientations(self, piece_id: str) -> int:
+        return len(CATALOGUE_3D[piece_id])
+
+    def peut_placer(self, forme, x0: int, y0: int, z0: int) -> bool:
+        for dx, dy, dz in forme:
+            x = x0 + dx
+            y = y0 + dy
+            z = z0 + dz
+            if not self.dans_plateau(x, y, z) or self.grille[z][y][x] is not None:
+                return False
+        return True
+
+    def generer_placements_valides(self, piece_id: str) -> list[tuple[tuple[int, int, int], ...]]:
+        placements = []
+        deja_vus = set()
+
+        for orientation in CATALOGUE_3D[piece_id]:
+            for z0 in range(self.HAUTEUR):
+                for y0 in range(self.HAUTEUR):
+                    for x0 in range(self.HAUTEUR):
+                        if self.peut_placer(orientation, x0, y0, z0):
+                            cases_absolues = []
+                            for dx, dy, dz in orientation:
+                                cases_absolues.append((x0 + dx, y0 + dy, z0 + dz))
+                            cle = frozenset(cases_absolues)
+                            if cle not in deja_vus:
+                                deja_vus.add(cle)
+                                placements.append(tuple(cases_absolues))
+        return placements
+
+    def poser_cases(self, id_piece: str, coords, verrouillee: bool = False) -> bool:
+        if id_piece in self.pieces_placees:
+            return False
+        for x, y, z in coords:
+            if not self.dans_plateau(x, y, z) or self.grille[z][y][x] is not None:
+                return False
+        coords_liste = list(coords)
+        for x, y, z in coords_liste:
             self.grille[z][y][x] = id_piece
-        self.pieces_placees[id_piece] = coords
-
+        self.pieces_placees[id_piece] = coords_liste
         if verrouillee:
             self.pieces_verrouillees.add(id_piece)
         return True
 
+    def poser_piece(self, id_piece: str, forme, x0: int, y0: int, z0: int, verrouillee: bool = False) -> bool:
+        coords = [(x0 + dx, y0 + dy, z0 + dz) for dx, dy, dz in forme]
+        return self.poser_cases(id_piece, coords, verrouillee)
 
-    def retirer_piece(self, id_piece):
-        if id_piece not in self.pieces_placees or id_piece in self.pieces_verrouillees:
+    def retirer_piece(self, id_piece: str) -> bool:
+        if id_piece not in self.pieces_placees:
             return False
-        for x,y,z in self.pieces_placees.pop(id_piece):
+        if id_piece in self.pieces_verrouillees:
+            return False
+        for x, y, z in self.pieces_placees.pop(id_piece):
             self.grille[z][y][x] = None
         return True
 
-
-    def premiere_case_vide(self):
-        for z in range(self.base):
-            for y in range(self.base-z):
-                for x in range(self.base-z):
-                    if self._est_vide(x,y,z):
-                        return x,y,z
-
-        return None
-
-
-    def get_ilots_vides(self):
-        ilots, visitees = [], set()
-        for z in range(self.base):
-            for y in range(self.base-z):
-                for x in range(self.base-z):
-                    depart = (x,y,z)
-                    if not self._est_vide(*depart) or depart in visitees:
-                        continue
-                    file,ilot = deque([depart]), set()
-                    visitees.add(depart)
-                    while file:
-                        p = file.popleft()
-                        ilot.add(p)
-                        for voisin in self._voisins(*p):
-                            if voisin not in visitees and self._est_vide(*voisin):
-                               visitees.add(voisin)
-                               file.append(voisin)
-                ilots.append(ilot)
-        return ilots            
-
-
-    def _voisins(self, x,y,z):
-
-        for dx,dy,dz in ((1,0,0),(-1,0,0),(0,1,0),(0,-1,0),(0,0,1),(0,0,-1)):
-            nx,ny,nz = x+dx , y+dy, z+dz
-            if self.dans_plateau(nx,ny,nz):
-                yield nx,ny,nz
-
-
-
-    def est_complet(self):
-        return self.premiere_case_vide() is None
-
-    def copier(self):
-        p = type(self)(self.base)
-        p.grille = [[ligne[:] for ligne in niveau] for niveau in self.grille]
-        p.pieces_placees = {ident: coords[:] for ident , coords in self.pieces_placees.items()}
+    def copier(self) -> "PlateauPyramid":
+        p = PlateauPyramid()
+        p.grille = [[ligne[:] for ligne in etage] for etage in self.grille]
+        p.pieces_placees = {i: j[:] for i, j in self.pieces_placees.items()}
         p.pieces_verrouillees = set(self.pieces_verrouillees)
         return p
 
-
     def afficher(self):
-        for z, niveau in enumerate(self.grille):
-            print(f'Niveau {z} ({self.base-z}x{self.base-z})')
-            for ligne in niveau:
-                print(' '.join(str(case) if case is not None else '.' for case in ligne))
-            print()
-
-
-    def case_la_plus_contrainte(self):
-        meilleure, min_voisins = None, float('inf')
-        for z in range(self.base):
-            for y in range(self.base-z):
-                for x in range(self.base - z):
-                    if not self._est_vide(x,y,z):
-                        continue
-                    n = sum(self._est_vide(*v) for v in self._voisins(x,y,z))
-                    if n == 0:
-                        return (x,y,z)
-                    if n < min_voisins:
-                        min_voisins, meilleure = n,(x,y,z)
-        return meilleure
-
-    
-
+        for z in range(self.HAUTEUR):
+            print(f"--- Étage z={z} ---")
+            for ligne in self.grille[z]:
+                print(" ".join(c if c else "." for c in ligne))
+        print()

@@ -75,6 +75,7 @@ def executer_benchmark(mode_cible: str = "losange"):
                 noeuds = metriques.get("noeuds_explores", 0)
             except Exception as e:
                 ok, t_ms, noeuds = False, 0.0, 0
+                print(f"  Erreur défi #{did} : {e}")
 
             if ok:
                 succes_count += 1
@@ -113,7 +114,7 @@ def executer_benchmark(mode_cible: str = "losange"):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Benchmark IQ-Puzzler Pro")
-    parser.add_argument("--mode", choices=["rectangle", "losange"], default="losange", help="Mode de jeu à tester")
+    parser.add_argument("--mode", choices=["rectangle", "losange", "pyramide"], default="pyramide", help="Mode de jeu à tester")
     args = parser.parse_args()
 
     executer_benchmark(mode_cible=args.mode)

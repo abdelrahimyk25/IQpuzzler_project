@@ -1,4 +1,4 @@
-from .plateau import Plateau
+from .plateau import Plateau2D
 
 INTERDIT = "#"
 CASES_INTERDITES = [
@@ -21,20 +21,19 @@ CASES_INTERDITES = [
     (0, 8), (5, 8), (6, 8), (7, 8), (8, 8),
 ]
 
-class PlateauLosange(Plateau):
+class PlateauLosange(Plateau2D):
     HAUTEUR = 9
     LARGEUR = 9
 
     def __init__(self):
         super().__init__(largeur=self.LARGEUR, hauteur=self.HAUTEUR)
-        # mettre des case inutilisable pour la losange
         self.cases_interdites = set(CASES_INTERDITES)
 
         for x, y in self.cases_interdites:
+            assert super().dans_plateau(x, y), f"case interdite hors grille : {(x, y)}"
             self.grille[y][x] = INTERDIT
 
-    def dans_plateau(self, x, y):
-        # Une case fait partie du losange si elle est dans la grille 9x9 ET non interdite
+    def dans_plateau(self, x: int, y: int) -> bool:
         return super().dans_plateau(x, y) and (x, y) not in self.cases_interdites
 
     def copier(self) -> "PlateauLosange":

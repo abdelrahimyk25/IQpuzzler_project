@@ -1,10 +1,10 @@
-from .plateau import Plateau
+from .plateau import Plateau2D
 
-# definir les dims (5x11)
-HAUTEUR = 5 # 0...4
-LARGEUR = 11 # 0....10
+HAUTEUR = 5   # 0...4
+LARGEUR = 11  # 0...10
 
-class PlateauRectangle(Plateau):
+
+class PlateauRectangle(Plateau2D):
     HAUTEUR = HAUTEUR
     LARGEUR = LARGEUR
 

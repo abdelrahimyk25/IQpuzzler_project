@@ -2,105 +2,184 @@ from abc import ABC, abstractmethod
 from collections import deque
 from .pieces import CATALOGUE
 
+
 class Plateau(ABC):
-    # Un grid[y][x] : 
+    """
+    Interface abstraite commune à tous les plateaux (2D et 3D).
+    Le solveur CSP ne dialogue qu'avec ces méthodes.
+    """
+
+    def __init__(self):
+        self.pieces_placees = {}
+        self.pieces_verrouillees = set()
+
     @abstractmethod
-    def __init__(self, largeur, hauteur):
+    def est_vide(self, case) -> bool:
+        """Retourne True si la case (tuple 2D ou 3D) est libre."""
+        pass
+
+    @abstractmethod
+    def lister_cases_vides(self) -> list:
+        """Retourne la liste de toutes les cases actuellement libres."""
+        pass
+
+    @abstractmethod
+    def obtenir_voisins(self, case) -> list:
+        """Retourne la liste des cases voisines valides dans le plateau."""
+        pass
+
+    @abstractmethod
+    def degre_max(self) -> int:
+        """Nombre maximal de voisins d'une case (4 en 2D, 12 en pyramide 3D)."""
+        pass
+
+    @abstractmethod
+    def nb_orientations(self, piece_id: str) -> int:
+        """Retourne le nombre d'orientations possibles de la pièce sur ce plateau."""
+        pass
+
+    @abstractmethod
+    def generer_placements_valides(self, piece_id: str) -> list[tuple]:
+        """
+        Retourne tous les placements valides de piece_id sur l'état actuel du plateau.
+        Chaque placement est un tuple de coordonnées absolues (cases_absolues).
+        """
+        pass
+
+    @abstractmethod
+    def poser_cases(self, id_piece: str, coords, verrouillee: bool = False) -> bool:
+        """Pose directement une pièce à partir de ses coordonnées absolues."""
+        pass
+
+    @abstractmethod
+    def retirer_piece(self, id_piece: str) -> bool:
+        """Retire une pièce non verrouillée du plateau."""
+        pass
+
+    @abstractmethod
+    def copier(self) -> "Plateau":
+        pass
+
+    @abstractmethod
+    def afficher(self):
+        pass
+
+    def est_complet(self) -> bool:
+        return len(self.lister_cases_vides()) == 0
+
+
+class Plateau2D(Plateau):
+    """Base commune pour les plateaux 2D (Rectangle et Losange)."""
+
+    @abstractmethod
+    def __init__(self, largeur: int, hauteur: int):
+        super().__init__()
         self.largeur = largeur
         self.hauteur = hauteur
-       
         self.grille = [[None] * self.largeur for _ in range(self.hauteur)]
-        # Listes des pieces placees et verrouillees
-        self.pieces_placees = {} 
-        self.pieces_verrouillees = set() # set pour pas permettre de bougé les pieces intialisé au debut
 
-    def dans_plateau(self, x, y): # une fonction pour checker si une piece est dans le plateau ou pas
+    def dans_plateau(self, x: int, y: int) -> bool:
         return 0 <= x < self.largeur and 0 <= y < self.hauteur
 
-    # Fonction pour verifier si une pieces peut etre placé ou pas
-    # forme ici est une orientation normalisée
-    # x0, y0 sont la position du coin haut-gauche de la forme sur le plateau
-    def peut_placer(self, forme, x0, y0):
-        for dx, dy in forme:
-            # coordonnée réelle de la bille sur le plateau
-            x, y = x0 + dx, y0 + dy
-            # echec si on sort de plateau ou la case est déja occupée
-            if not self.dans_plateau(x, y) or not self._est_vide(x, y):
-                return False
-        return True
+    def _est_vide(self, x: int, y: int) -> bool:
+        return self.grille[y][x] in (None, ".")
 
-    def poser_piece(self, id_piece, forme, x0, y0, verrouillee=False) -> bool:
-        # verification que la piece est placée une seule fois
+    # --- Implémentation du contrat générique Plateau ---
+
+    def est_vide(self, case: tuple[int, int]) -> bool:
+        x, y = case
+        return self.grille[y][x] is None
+
+    def lister_cases_vides(self) -> list[tuple[int, int]]:
+        cases_vides = []
+        for y in range(self.hauteur):
+            for x in range(self.largeur):
+                if self.grille[y][x] is None:
+                    cases_vides.append((x, y))
+        return cases_vides
+
+    def obtenir_voisins(self, case: tuple[int, int]) -> list[tuple[int, int]]:
+        x, y = case
+        voisins = []
+        directions = ((1, 0), (-1, 0), (0, 1), (0, -1))
+        for dx, dy in directions:
+            nx = x + dx
+            ny = y + dy
+            if self.dans_plateau(nx, ny):
+                voisins.append((nx, ny))
+        return voisins
+
+    def degre_max(self) -> int:
+        return 4
+
+    def nb_orientations(self, piece_id: str) -> int:
+        return len(CATALOGUE[piece_id])
+
+    def generer_placements_valides(self, piece_id: str) -> list[tuple[tuple[int, int], ...]]:
+        placements = []
+        for orientation in CATALOGUE[piece_id]:
+            for x0 in range(self.largeur):
+                for y0 in range(self.hauteur):
+                    if self.peut_placer(orientation, x0, y0):
+                        cases_absolues = []
+                        for dx, dy in orientation:
+                            cases_absolues.append((x0 + dx, y0 + dy))
+                        placements.append(tuple(cases_absolues))
+        return placements
+
+    def poser_cases(self, id_piece: str, coords, verrouillee: bool = False) -> bool:
         if id_piece in self.pieces_placees:
             return False
-        # verif avant d'ecrire
-        if not self.peut_placer(forme, x0, y0):
-            return False
-        # calcul des coords absolues de chauqe bille
-        coords = [(x0 + dx, y0 + dy) for dx, dy in forme]
         for x, y in coords:
+            if not self.dans_plateau(x, y) or not self.est_vide((x, y)):
+                return False
+        coords_liste = list(coords)
+        for x, y in coords_liste:
             self.grille[y][x] = id_piece
-
-        # on les memoris pour pouvoir retirer plutard
-        self.pieces_placees[id_piece] = coords
-        # piece de défi initial interdit de la retirer ensuite
+        self.pieces_placees[id_piece] = coords_liste
         if verrouillee:
             self.pieces_verrouillees.add(id_piece)
         return True
 
-    def retirer_piece(self, id_piece) -> bool:
-        # pas possible de retirer un truc qui n'est pas sur le plateau Mdrr
-        if id_piece not in self.pieces_placees:
-            return False
-        # eviter de retirer un piece de defi initial
-        if id_piece in self.pieces_verrouillees:
-            return False
-        # retire l'entree du catalogue avec pop() et envoie ses coords
-        for x, y in self.pieces_placees.pop(id_piece):
-            self.grille[y][x] = None # on vide les cases
+    # --- Méthodes 2D conservées pour compatibilité (defis.py, tests...) ---
+
+    def peut_placer(self, forme, x0: int, y0: int) -> bool:
+        for dx, dy in forme:
+            x, y = x0 + dx, y0 + dy
+            if not self.dans_plateau(x, y) or not self._est_vide(x, y):
+                return False
         return True
 
-    def premiere_case_vide(self) -> tuple[int, int]:
-        # on parcours col par col et de ligne haut a ligne bas jusqu'a quand on trouve la case
+    def poser_piece(self, id_piece: str, forme, x0: int, y0: int, verrouillee: bool = False) -> bool:
+        if id_piece in self.pieces_placees:
+            return False
+        if not self.peut_placer(forme, x0, y0):
+            return False
+        coords = [(x0 + dx, y0 + dy) for dx, dy in forme]
+        for x, y in coords:
+            self.grille[y][x] = id_piece
+        self.pieces_placees[id_piece] = coords
+        if verrouillee:
+            self.pieces_verrouillees.add(id_piece)
+        return True
+
+    def retirer_piece(self, id_piece: str) -> bool:
+        if id_piece not in self.pieces_placees:
+            return False
+        if id_piece in self.pieces_verrouillees:
+            return False
+        for x, y in self.pieces_placees.pop(id_piece):
+            self.grille[y][x] = None
+        return True
+
+    def premiere_case_vide(self) -> tuple[int, int] | None:
         for x in range(self.largeur):
             for y in range(self.hauteur):
                 if self._est_vide(x, y):
                     return (x, y)
         return None
 
-    def case_la_plus_contrainte(self) -> tuple[int, int]:
-        """
-        Retourne la case vide avec le moins de voisins vides adjacents (MRV géométrique).
-        Ultra-rapide à calculer et cible naturellement les goulots d'étranglement.
-        """
-        case_min = None
-        min_voisins = float('inf')
-
-        for x in range(self.largeur):
-            for y in range(self.hauteur):
-                if self._est_vide(x, y):
-                    voisins_vides = 0
-                    
-                    # Vérification des 4 directions : Haut, Bas, Gauche, Droite
-                    for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
-                        nx, ny = x + dx, y + dy
-                        # Vérifie si le voisin est dans les limites du plateau et s'il est vide
-                        if self.dans_plateau(nx, ny) and self._est_vide(nx, ny):
-                            voisins_vides += 1
-                    
-                    # Coupure instantanée : si une case a 0 voisin libre, c'est un trou isolé d'une case.
-                    # On la retourne immédiatement pour que le solveur back-track tout de suite.
-                    if voisins_vides == 0:
-                        return (x, y)
-
-                    if voisins_vides < min_voisins:
-                        min_voisins = voisins_vides
-                        case_min = (x, y)
-
-        return case_min
-
     def get_ilots_vides(self):
-        # BFS : renvoie la liste des zones de cases vides connexes (4 voisins)
         ilots = []
         visitees = set()
         for y in range(self.hauteur):
@@ -112,23 +191,14 @@ class Plateau(ABC):
                     while file:
                         cx, cy = file.popleft()
                         ilot.add((cx, cy))
-                        for nx, ny in ((cx+1, cy), (cx-1, cy), (cx, cy+1), (cx, cy-1)):
+                        for nx, ny in ((cx + 1, cy), (cx - 1, cy), (cx, cy + 1), (cx, cy - 1)):
                             if self.dans_plateau(nx, ny) and self._est_vide(nx, ny) and (nx, ny) not in visitees:
                                 visitees.add((nx, ny))
                                 file.append((nx, ny))
                     ilots.append(ilot)
         return ilots
 
-    # fonction pour la fin de jeu quand le plateau est complet
-    def est_complet(self) -> bool: 
-        return self.premiere_case_vide() is None
-
-    # fonction pour verifier si le plateau est vide ou pas 
-    def _est_vide(self, x, y): 
-        return self.grille[y][x] is None
-
-    # constructeur pour copier un plateau
-    def copier(self) -> "Plateau":
+    def copier(self) -> "Plateau2D":
         p = type(self)()
         p.hauteur = self.hauteur
         p.largeur = self.largeur
@@ -137,7 +207,6 @@ class Plateau(ABC):
         p.pieces_verrouillees = set(self.pieces_verrouillees)
         return p
 
-    # fonction pour afficher le plateau
     def afficher(self):
         for ligne in self.grille:
             print(" ".join(c if c else "." for c in ligne))
