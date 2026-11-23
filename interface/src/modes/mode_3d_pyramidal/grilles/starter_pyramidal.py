@@ -76,7 +76,7 @@ def afficher_grilles_starter_3d_pyramidal(fenetre):
             bouton.verifier_survol(pos_souris)
             if bouton.a_ete_clique(pos_souris, clic_souris):
                 print(f"Lancement de la grille {bouton.texte}")
-                return "starter_pyramidal"
+                return "jeu_3d_pyramidal"
 
         # 5. Affichage dynamique
         fenetre.fill(BLANC)

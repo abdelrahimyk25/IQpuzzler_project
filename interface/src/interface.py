@@ -26,6 +26,7 @@ from modes.mode_2d_diagonal.grilles.wizard_diagonal import afficher_grilles_wiza
 
 from modes.mode_2d_orthogonal.jeu_2d_orthogonal import afficher_plateau_2d_orthogonal
 from modes.mode_2d_diagonal.jeu_2d_diagonal import afficher_plateau_2d_diagonal
+from modes.mode_3d_pyramidal.jeu_3d_pyramidal import afficher_plateau_3d_pyramidal
 
 # 1. Initialisation globale
 pygame.init()
@@ -55,6 +56,42 @@ liste_plateau_diag = [
     ["#", "F", "F", "L", "L", "#", "#", "#", "#"],
 ]
 
+liste_plateau_pyr = [
+    [
+        ["C", "C", "C", "C", "B"],
+        ["C", "K", "B", "B", "B"],
+        ["G", "K", "K", "B", "D"],
+        ["G", "K", "L", "D", "L"],
+        ["G", "G", "L", "L", "L"]
+    ],
+
+    # Niveau 1 
+    [
+        ["A", "J", "J", "J"],
+        ["A", "J", "J", "F"],
+        ["A", "A", "F", "D"],
+        ["A", "F", "D", "E"]
+    ],
+
+    # Niveau 2
+    [
+        ["H", "H", "H"],
+        ["H", "E", "F"],
+        ["H", "F", "E"]
+    ],
+
+    # Niveau 3
+    [
+        ["E", "I"],
+        ["I", "E"]
+    ],
+
+    # Niveau 4
+    [
+        ["I"]
+    ]
+]
+
 # 2. État initial au lancement
 etat_actuel = "menu"
 
@@ -68,8 +105,9 @@ while etat_actuel != "quitter":
 
   if etat_actuel == "menu":
     # On passe le contrôle au menu principal
-    etat_actuel = afficher_menu_principal(fenetre)
+    #etat_actuel = afficher_menu_principal(fenetre)
     #etat_actuel = afficher_plateau_2d_diagonal(fenetre, liste_plateau_diag)##------------------a modifier
+    etat_actuel = afficher_plateau_3d_pyramidal(fenetre, liste_plateau_diag)
 
   elif etat_actuel == "selection_mode":
     # On passe le contrôle à la sélection du mode
@@ -174,6 +212,11 @@ while etat_actuel != "quitter":
                       # On passe le contrôle à la sélection du mode
                       print("afichage plateau")
                       etat_actuel = afficher_plateau_2d_diagonal(fenetre, liste_plateau_diag)
+
+  elif etat_actuel == "jeu_3d_pyramidal":
+                      # On passe le contrôle à la sélection du mode
+                      print("afichage plateau")
+                      etat_actuel = afficher_plateau_3d_pyramidal(fenetre, liste_plateau_diag)
 
   elif etat_actuel == "jeu":
     # Exemple pour plus tard : etat_actuel = lancer_jeu(fenetre)

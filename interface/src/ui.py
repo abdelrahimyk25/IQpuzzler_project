@@ -89,7 +89,7 @@ class Image:
 
 
 class Boule:
-  def __init__(self, x, y, couleur, rayon=27):
+  def __init__(self, x, y, couleur, rayon=15):
       self.x = x
       self.y = y
       self.couleur = couleur
