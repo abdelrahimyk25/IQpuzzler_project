@@ -13,7 +13,6 @@ ROUGE = (255, 0, 0)
 
 def afficher_plateau_3d_pyramidal(fenetre, liste_plateau):
 
-    print(liste_plateau)
     horloge = pygame.time.Clock()
 
     # Polices

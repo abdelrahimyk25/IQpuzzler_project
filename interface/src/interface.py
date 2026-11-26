@@ -105,9 +105,9 @@ while etat_actuel != "quitter":
 
   if etat_actuel == "menu":
     # On passe le contrôle au menu principal
-    #etat_actuel = afficher_menu_principal(fenetre)
+    etat_actuel = afficher_menu_principal(fenetre)
     #etat_actuel = afficher_plateau_2d_diagonal(fenetre, liste_plateau_diag)##------------------a modifier
-    etat_actuel = afficher_plateau_3d_pyramidal(fenetre, liste_plateau_diag)
+    
 
   elif etat_actuel == "selection_mode":
     # On passe le contrôle à la sélection du mode
