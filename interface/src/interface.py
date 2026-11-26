@@ -216,7 +216,7 @@ while etat_actuel != "quitter":
   elif etat_actuel == "jeu_3d_pyramidal":
                       # On passe le contrôle à la sélection du mode
                       print("afichage plateau")
-                      etat_actuel = afficher_plateau_3d_pyramidal(fenetre, liste_plateau_diag)
+                      etat_actuel = afficher_plateau_3d_pyramidal(fenetre, liste_plateau_pyr)
 
   elif etat_actuel == "jeu":
     # Exemple pour plus tard : etat_actuel = lancer_jeu(fenetre)

@@ -82,7 +82,7 @@ def afficher_plateau_2d_orthogonal(fenetre, liste_plateau):
         "K" : (18,142,94),
         "L" : (151,191,34)
     }
-
+    
     #Boules:
 
     boules = {}
